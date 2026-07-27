@@ -1,0 +1,232 @@
+<resources>
+    <string name="app_name">Fast Xbet Cashier</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">முகப்பு</string>
+    <string name="nav_deposit">வைப்பு</string>
+    <string name="nav_withdraw">திரும்பப் பெறல்</string>
+    <string name="nav_history">வரலாறு</string>
+    <string name="nav_profile">சுயவிவரம்</string>
+    <string name="nav_admin">நிர்வாகக் குழு</string>
+    
+    <!-- Home / Main Menu -->
+    <string name="welcome_title">Fast Xbet அதிகாரப்பூர்வ AI ஆதரவு</string>
+    <string name="welcome_subtitle">இலங்கைக்கான வேகமான, பாதுகாப்பான 1xBet வைப்புகள் மற்றும் ரொக்கத் திரும்பப் பெறல்கள்</string>
+    <string name="menu_deposit">ரொக்க வைப்பு (Deposit)</string>
+    <string name="menu_deposit_desc">1xBet கணக்கிற்கு 5-15 நிமிடங்களில் அதிவேக வைப்பு</string>
+    <string name="menu_withdraw">ரொக்கத் திரும்பப் பெறல் (Withdraw)</string>
+    <string name="menu_withdraw_desc">1xBet Cash மூலம் உங்கள் வங்கி கணக்கிற்கு பணத்தை எடுக்கவும்</string>
+    <string name="menu_registration">1xBet பதிவு &amp; போனஸ்</string>
+    <string name="menu_registration_desc">ப்ரோமோ குறியீட்டைப் பயன்படுத்தி முதல் வைப்புத்தொகைக்கு 150% போனஸ் பெறுங்கள்</string>
+    <string name="menu_tips">தினசரி இலவச உதவிக்குறிப்புகள்</string>
+    <string name="menu_tips_desc">தினசரி இலவச பந்தய உதவிக்குறிப்புகளுக்கு எங்கள் அதிகாரப்பூர்வ டெலிகிராமில் இணையுங்கள்</string>
+    <string name="menu_guide">பயனர் வழிகாட்டி</string>
+    <string name="menu_guide_desc">வைப்பு மற்றும் திரும்பப் பெறல்களுக்கான படிப்படியான வழிகாட்டி</string>
+    <string name="menu_privacy">தனியுரிமைக் கொள்கை</string>
+    <string name="menu_privacy_desc">உங்கள் தகவல்களை நாங்கள் எவ்வாறு பாதுகாக்கிறோம் என்பதைப் படியுங்கள்</string>
+    <string name="home_section_cashier">அதிகாரப்பூர்வ காசாளர் சேவைகள்</string>
+    <string name="hero_cashier_badge">⚡ 24/7 அதிகாரப்பூர்வ காசாளர்</string>
+    <string name="promo_bonus_subtitle">முதல் வைப்புத்தொகைக்கு 150% போனஸ் பெறுங்கள்</string>
+
+    <!-- Promo Code & External Links -->
+    <string name="promo_code_title">அதிகாரப்பூர்வ ப்ரோமோ குறியீடு</string>
+    <string name="promo_code_value">VGSL</string>
+    <string name="copy_promo">குறியீட்டை நகலெடு</string>
+    <string name="promo_copied">ப்ரோமோ குறியீடு நகலெடுக்கப்பட்டது!</string>
+    <string name="register_now">1xBet இல் பதிவுசெய்</string>
+    <string name="join_telegram">இலவச டெலிகிராமில் இணையுங்கள்</string>
+    
+    <!-- Deposit Flow -->
+    <string name="deposit_title">வைப்பு கணக்குகள்</string>
+    <string name="select_bank_prompt">பரிமாற்ற விவரங்களைக் காண கீழே உள்ள வங்கி கணக்கைத் தேர்ந்தெடுக்கவும்:</string>
+    <string name="bank_account_number">கணக்கு எண்:</string>
+    <string name="bank_account_holder">உரிமையாளர்:</string>
+    <string name="bank_branch">கிளை:</string>
+    <string name="deposit_instructions_title">பரிமாற்ற வழிகாட்டுதல்கள்</string>
+    <string name="deposit_step1">1. மேலே தேர்ந்தெடுக்கப்பட்ட வங்கி கணக்கிற்கு பணத்தை மாற்றவும்.</string>
+    <string name="deposit_step2">2. குறிப்பில் (Remark) உங்கள் 1xBet பிளேயர் ஐடியை உள்ளிடவும்.</string>
+    <string name="deposit_step3">3. தெளிவான ரசீது புகைப்படத்தை கீழே பதிவேற்றவும்.</string>
+    <string name="upload_slip_btn">வைப்பு ரசீதைப் பதிவேற்றவும்</string>
+    <string name="analyzing_slip">AI ரசீதை பகுப்பாய்வு செய்கிறது... காத்திருக்கவும்</string>
+    <string name="analyzing_extracting">வங்கி, தொகை, குறிப்பு எண் மற்றும் தேதியை பிரித்தெடுக்கிறது</string>
+    <string name="slip_detected_title">ரசீது பகுப்பாய்வு செய்யப்பட்டது</string>
+    <string name="detected_amount">கண்டறியப்பட்ட தொகை:</string>
+    <string name="detected_bank">அடையாளம் காணப்பட்ட வங்கி:</string>
+    <string name="enter_player_id">1xBet பிளேயர் ஐடியை உள்ளிடவும் (5–12 இலக்கங்கள்):</string>
+    <string name="player_id_placeholder">எ.கா. 12345678</string>
+    <string name="confirm_deposit_btn">வைப்பு கோரிக்கையை சமர்ப்பிக்கவும்</string>
+    <string name="deposit_success_title">வைப்பு கோரிக்கை சமர்ப்பிக்கப்பட்டது!</string>
+    <string name="deposit_success_msg">உங்கள் கோரிக்கை பெறப்பட்டது. 5-15 நிமிடங்களுக்குள் நிதி உங்கள் 1xBet கணக்கில் சேர்க்கப்படும்.</string>
+    <string name="step_x_of_y">படி %1$d / %2$d</string>
+    <string name="label_txn_reference">பரிவர்த்தனை குறிப்பு:</string>
+    <string name="change_image">படத்தை மாற்றவும்</string>
+    <string name="copied_account_toast">கணக்கு நகலெடுக்கப்பட்டது: %1$s</string>
+
+    <!-- Withdraw Flow -->
+    <string name="withdraw_title">ரொக்கத் திரும்பப் பெறல்</string>
+    <string name="withdraw_address_info">திரும்பப் பெறும் முறை: 1xBet Cash\nநகரம்: Walasmulla | தெரு: Beliaththa Road 24/7</string>
+    <string name="withdraw_min_max">அனுமதிக்கப்பட்ட எல்லை: LKR 1,000 – LKR 500,000</string>
+    <string name="saved_bank_notice">முந்தைய சேமிக்கப்பட்ட வங்கி விவரங்களிலிருந்து தானாக நிரப்பப்பட்டது.</string>
+    <string name="label_player_id">1xBet பிளேயர் ஐடி</string>
+    <string name="label_amount">தொகை (LKR)</string>
+    <string name="label_secret_code">4 இலக்க ரகசிய குறியீடு</string>
+    <string name="label_bank_name">வங்கியின் பெயர்</string>
+    <string name="label_acc_holder">கணக்கு உரிமையாளர் பெயர்</string>
+    <string name="label_acc_number">கணக்கு எண்</string>
+    <string name="label_branch">கிளையின் பெயர்</string>
+    <string name="submit_withdrawal_btn">திரும்பப் பெறல் கோரிக்கையை சமர்ப்பிக்கவும்</string>
+    <string name="withdraw_success_title">திரும்பப் பெறல் கோரிக்கை பெறப்பட்டது!</string>
+    <string name="withdraw_success_msg">உங்கள் ரகசிய குறியீட்டைச் சரிபார்த்து, 5-15 நிமிடங்களுக்குள் உங்கள் வங்கிக்கு நிதி மாற்றப்படும்.</string>
+    <string name="withdraw_bank_details_header">பரிமாற்றத்திற்கான வங்கி விவரங்கள்:</string>
+    <string name="btn_autofill">தானாக நிரப்புக</string>
+    <string name="pending_withdraw_exists_header">⚠️ நிலுவையில் உள்ள திரும்பப் பெறல் கோரிக்கை உள்ளது</string>
+    <string name="pending_withdraw_exists_details">அடையாளம்: #%1$d | தொகை: %2$s | வங்கி: %3$s\nபுதிய கோரிக்கையை உருவாக்குவதற்கு முன் நிர்வாகியின் ஒப்புதலுக்கு காத்திருக்கவும்.</string>
+    <string name="cancel_request_id">கோரிக்கை #%1$d ஐ ரத்து செய்</string>
+
+    <!-- History -->
+    <string name="history_title">பரிவர்த்தனை வரலாறு</string>
+    <string name="tab_deposits">வைப்புகள்</string>
+    <string name="tab_withdrawals">திரும்பப் பெறல்கள்</string>
+    <string name="no_transactions">பரிவர்த்தனை பதிவுகள் எதுவும் கிடைக்கவில்லை.</string>
+    <string name="status_approved">அங்கீகரிக்கப்பட்டது</string>
+    <string name="status_completed">நிறைவடைந்தது</string>
+    <string name="status_pending">நிலுவையில் உள்ளது</string>
+    <string name="status_rejected">நிராகரிக்கப்பட்டது</string>
+    <string name="status_cancelled">ரத்து செய்யப்பட்டது</string>
+    <string name="cancel_withdrawal_btn">கோரிக்கையை ரத்து செய்</string>
+    <string name="withdrawal_cancelled_msg">திரும்பப் பெறல் கோரிக்கை வெற்றிகரமாக ரத்து செய்யப்பட்டது.</string>
+    <string name="deposit_id_title">வைப்பு #%1$d</string>
+    <string name="withdrawal_id_title">திரும்பப் பெறல் #%1$d</string>
+    <string name="history_bank_player_info">வங்கி: %1$s | பிளேயர் ஐடி: %2$s</string>
+    <string name="history_ref_info">குறிப்பு: %1$s</string>
+    <string name="history_bank_acc_info">வங்கி: %1$s | கணக்கு: %2$s</string>
+    <string name="history_holder_player_info">உரிமையாளர்: %1$s | பிளேயர் ஐடி: %2$s</string>
+    <string name="history_payout_ref_info">பணம் செலுத்தல் குறிப்பு: %1$s</string>
+    <string name="history_reason_info">காரணம்: %1$s</string>
+
+    <!-- Scam Warning -->
+    <string name="scam_warning_title">பாதுகாப்பு எச்சரிக்கை</string>
+    <string name="scam_warning_msg">Fast Xbet உங்கள் 1xBet கணக்கு கடவுச்சொல், பின் அல்லது OTP ஐ ஒருபோதும் கேட்காது. உங்களின் விவரங்களை யாருடனும் பகிர வேண்டாம்!</string>
+
+    <!-- Validation & Toast Errors -->
+    <string name="err_invalid_player_id">பிளேயர் ஐடி 5 முதல் 12 இலக்கங்களுக்குள் இருக்க வேண்டும்.</string>
+    <string name="err_invalid_amount">தொகை LKR 1,000 மற்றும் LKR 500,000 இடையே இருக்க வேண்டும்.</string>
+    <string name="err_empty_field">தேவையான அனைத்து விவரங்களையும் நிரப்பவும்.</string>
+    <string name="err_pending_withdraw_exists">உங்களிடம் ஏற்கனவே நிலுவையில் உள்ள திரும்பப் பெறல் கோரிக்கை உள்ளது (#%1$s %2$s).</string>
+    <string name="err_duplicate_slip">இந்த ரசீது குறிப்பு ஏற்கனவே சமர்ப்பிக்கப்பட்டுள்ளது.</string>
+    <string name="err_invalid_file">செல்லுபடியாகும் JPG அல்லது PNG படத்தை பதிவேற்றவும் (Max 5MB).</string>
+    <string name="err_submit_deposit_failed">வைப்பு கோரிக்கையை சமர்ப்பிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="err_submit_withdraw_failed">திரும்பப் பெறல் கோரிக்கையை சமர்ப்பிக்க முடியவில்லை.</string>
+    <string name="err_cancel_withdraw_failed">திரும்பப் பெறல் #%1$d ஐ ரத்து செய்ய முடியவில்லை.</string>
+    <string name="err_invalid_admin_pin">தவறான நிர்வாகி பின் எண்</string>
+    <string name="msg_deposit_submitted">வைப்பு கோரிக்கை சமர்ப்பிக்கப்பட்டது!</string>
+    <string name="msg_withdraw_submitted">திரும்பப் பெறல் கோரிக்கை சமர்ப்பிக்கப்பட்டது!</string>
+    <string name="msg_withdraw_cancelled">திரும்பப் பெறல் கோரிக்கை #%1$d ரத்து செய்யப்பட்டது.</string>
+    <string name="msg_bank_cleared">சேமிக்கப்பட்ட வங்கி விவரங்கள் அழிக்கப்பட்டன.</string>
+    <string name="msg_admin_access_granted">நிர்வாக குழு அணுகல் வழங்கப்பட்டது</string>
+    <string name="msg_deposit_approved">வைப்பு #%1$d அங்கீகரிக்கப்பட்டது</string>
+    <string name="msg_deposit_rejected">வைப்பு #%1$d நிராகரிக்கப்பட்டது</string>
+    <string name="msg_withdraw_approved">திரும்பப் பெறல் #%1$d அங்கீகரிக்கப்பட்டது</string>
+    <string name="msg_withdraw_rejected">திரும்பப் பெறல் #%1$d நிராகரிக்கப்பட்டது</string>
+
+    <!-- Settings / Profile -->
+    <string name="profile_title">சுயவிவரம் &amp; அமைப்புகள்</string>
+    <string name="select_language">செயலி மொழி</string>
+    <string name="lang_english">English 🇬🇧</string>
+    <string name="lang_sinhala">සිංහල 🇱🇰</string>
+    <string name="lang_tamil">தமிழ் 🇱🇰</string>
+    <string name="saved_bank_details">சேமிக்கப்பட்ட வங்கி விவரங்கள்</string>
+    <string name="clear_saved_bank">சேமிக்கப்பட்ட வங்கியைக் காலி செய்</string>
+    <string name="btn_clear">அழி</string>
+    <string name="label_bank">வங்கி:</string>
+    <string name="label_account_holder">கணக்கு உரிமையாளர்:</string>
+    <string name="label_account_number">கணக்கு எண்:</string>
+    <string name="label_branch_col">கிளை:</string>
+    <string name="no_saved_bank_msg">இன்னும் சேமிக்கப்பட்ட வங்கி விவரங்கள் இல்லை. தானாகவே சேமிக்க திரும்பப் பெறல் கோரிக்கையைச் சமர்ப்பிக்கவும்.</string>
+    <string name="btn_view_guide">வழிகாட்டியைக் காண்க</string>
+    <string name="admin_access">நிர்வாகி அணுகல்</string>
+    <string name="btn_open_admin">நிர்வாக குழுவைத் திறக்கவும்</string>
+    <string name="btn_logout">வெளியேறு</string>
+
+    <!-- Admin Panel -->
+    <string name="admin_title">நிர்வாக மேலாண்மை குழு</string>
+    <string name="admin_pin_prompt">நிர்வாகி பின் எண்ணை உள்ளிடவும்:</string>
+    <string name="admin_login_btn">நிர்வாகியில் உள்நுழைக</string>
+    <string name="err_invalid_pin">தவறான நிர்வாகி பின்</string>
+    <string name="admin_stats">அமைப்பின் புள்ளிவிவரங்கள்</string>
+    <string name="admin_total_users">மொத்த பயனர்கள்:</string>
+    <string name="admin_pending_deposits">நிலுவை வைப்புகள்:</string>
+    <string name="admin_pending_withdrawals">நிலுவை திரும்பப் பெறல்கள்:</string>
+    <string name="approve_btn">அங்கீகரி</string>
+    <string name="reject_btn">நிராகரி</string>
+    <string name="payout_ref_prompt">பணம் செலுத்தல் குறிப்பை உள்ளிடவும்:</string>
+    <string name="rejection_reason_prompt">நிராகரிப்பு காரணத்தை உள்ளிடவும்:</string>
+    <string name="stat_users">பயனர்கள்</string>
+    <string name="stat_pending_dep">நிலுவை வைப்பு</string>
+    <string name="stat_pending_wdr">நிலுவை திரும்பப் பெறல்</string>
+    <string name="admin_tab_deposits">வைப்புகள் (%1$d)</string>
+    <string name="admin_tab_withdrawals">திரும்பப் பெறல்கள் (%1$d)</string>
+    <string name="admin_security_access">நிர்வாக பாதுகாப்பு அணுகல்</string>
+    <string name="payout_ref_placeholder">பணம் செலுத்தல் குறிப்பு (எ.கா. TRF984210)</string>
+
+    <!-- User Guide -->
+    <string name="guide_section1_title">1. ரொக்க வைப்பு வழிகாட்டி</string>
+    <string name="guide_section1_step1">கீழ் மெனுவில் வைப்பு என்பதைத் தட்டவும்.</string>
+    <string name="guide_section1_step2">உங்களுக்கு விருப்பமான வங்கி கணக்கைத் தேர்ந்தெடுக்கவும் (BOC, People\'s Bank, Sampath Bank, LOLC Finance, iPay).</string>
+    <string name="guide_section1_step3">காட்டப்பட்டுள்ள கணக்கு எண்ணிற்கு பணத்தை மாற்றவும். பரிமாற்றக் குறிப்பில் உங்கள் 1xBet பிளேயர் ஐடியை வைக்க மறக்காதீர்கள்.</string>
+    <string name="guide_section1_step4">தெளிவான ரசீது புகைப்படம் அல்லது ஸ்கிரீன்ஷாட்டை பதிவேற்றவும்.</string>
+    <string name="guide_section1_step5">AI ஸ்கேனர் ரசீது விவரங்களைச் சரிபார்க்கிறது. உங்கள் 1xBet பிளேயர் ஐடியை உறுதிசெய்து சமர்ப்பிக்கவும்.</string>
+    <string name="guide_section1_step6">5-15 நிமிடங்களுக்குள் நிதி உங்கள் 1xBet கணக்கில் வரவு வைக்கப்படும்!</string>
+
+    <string name="guide_section2_title">2. ரொக்க திரும்பப் பெறல் வழிகாட்டி</string>
+    <string name="guide_section2_step1">1xBet பயன்பாட்டைத் திறக்கவும் -&gt; திரும்பப் பெறல் -&gt; 1xBet ரொக்கத்தைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="guide_section2_step2">முகவரியைத் தேர்ந்தெடுக்கவும்: Walasmulla, Beliaththa Road 24/7.</string>
+    <string name="guide_section2_step3">தொகையை உள்ளிட்டு உங்களின் 4 இலக்க ரகசிய குறியீட்டைப் பெறுங்கள்.</string>
+    <string name="guide_section2_step4">Fast Xbet காசாளர் பயன்பாட்டைத் திறக்கவும் -&gt; கீழ் மெனுவில் திரும்பப் பெறு என்பதைத் தட்டவும்.</string>
+    <string name="guide_section2_step5">உங்கள் பிளேயர் ஐடி, ரகசிய குறியீடு, தொகை மற்றும் வங்கி கணக்கு விவரங்களை நிரப்பவும்.</string>
+    <string name="guide_section2_step6">சமர்ப்பி என்பதைத் தட்டவும். அங்கீகரிக்கப்பட்டதும், 5-15 நிமிடங்களுக்குள் உங்கள் வங்கிக்கு நிதி மாற்றப்படும்!</string>
+
+    <string name="guide_section3_title">3. 1xBet பதிவு &amp; 150% போனஸ்</string>
+    <string name="guide_section3_step1">முகப்புத் திரையில் \'1xBet இல் பதிவுசெய்\' என்பதைத் தட்டவும்.</string>
+    <string name="guide_section3_step2">பதிவு விவரங்களை பூர்த்தி செய்யவும்.</string>
+    <string name="guide_section3_step3">ப்ரோமோ குறியீட்டைப் பயன்படுத்தவும்: VGSL</string>
+    <string name="guide_section3_step4">உங்கள் முதல் வைப்புத்தொகைக்கு 150% போனஸைப் பெறுங்கள்!</string>
+
+    <string name="guide_section4_title">4. தினசரி இலவச உதவிக்குறிப்புகள்</string>
+    <string name="guide_section4_step1">முகப்புத் திரையில் \'இலவச உதவிக்குறிப்புகள் டெலிகிராமில் இணையுங்கள்\' என்பதைத் தட்டவும்.</string>
+    <string name="guide_section4_step2">எங்கள் அதிகாரப்பூர்வ டெலிகிராம் சமூக சேனலில் இணையுங்கள்.</string>
+    <string name="guide_section4_step3">தினசரி இலவச பந்தய உதவிக்குறிப்புகள் மற்றும் கணிப்புகளைப் பெறுங்கள்!</string>
+
+    <!-- Privacy Policy -->
+    <string name="privacy_title">தனியුரிமைக் கொள்கை</string>
+    <string name="privacy_body">🔒 தனியுரிமைக் கொள்கை — Fast Xbet Official Sri Lanka\n\n1. நாங்கள் சேகரிக்கும் தகவல்கள்:\n• உங்கள் 1xBet பயனர் ஐடி\n• பரிவர்த்தனைகளை உறுதிப்படுத்த வைப்பு ரசீதுகள்\n• திரும்பப் பெறுவதற்கான பாதுகாப்பு ரகசிய குறியீடுகள்\n• உங்கள் வங்கி கணக்கு விவரங்கள் (பணப் பரிமாற்றத்திற்கு மட்டும்)\n\n2. தகவல்களை எவ்வாறு பயன்படுத்துகிறோம்:\n• உங்கள் 1xBet கணக்கிற்கு நிதியை சேர்க்க\n• அங்கீகரிக்கப்பட்ட திரும்பப் பெறல்களை உங்கள் வங்கி கணக்கிற்கு மாற்ற\n\n3. தரவு பாதுகாப்பு:\n• உங்களின் தனிப்பட்ட தகவல்களை நாங்கள் மூன்றாம் தரப்பினருடன் பகிர மாட்டோம்\n• பரிவர்த்தனை தரவு கண்டிப்பாக இரகசியமாக வைக்கப்படுகிறது\n\n4. பொறுப்புத் துறப்பு:\n• எங்கள் சேவை வைப்பு மற்றும் திரும்பப் பெறலை எளிதாக்குவதற்கு மட்டுமே வரம்பிடப்பட்டுள்ளது\n• 1xBet தொழில்நுட்ப சிக்கல்கள் அல்லது விளையாட்டு இழப்புகளுக்கு நாங்கள் பொறுப்பல்ல\n• உங்கள் 1xBet கணக்கு விவரங்களைப் பாதுகாப்பாக வைப்பது உங்கள் பொறுப்பு\n\n5. எங்களைத் தொடர்பு கொள்ளவும்:\n📞 +94765865387\n© 2026 Fast Xbet Official Sri Lanka. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</string>
+
+    <!-- FAQ Accordion -->
+    <string name="faq_title">அடிக்கடி கேட்கப்படும் கேள்விகள் (FAQ)</string>
+    <string name="faq_subtitle">வைப்பு மற்றும் திரும்பப் பெறல்கள் பற்றிய கேள்விகளுக்கான விரைவான பதில்கள்</string>
+    <string name="faq_q1">வைப்பு செய்ய எவ்வளவு நேரம் ஆகும்?</string>
+    <string name="faq_a1">ரசீது சமர்ப்பிக்கப்பட்ட 5-15 நிமிடங்களுக்குள் வைப்புகள் சரிபார்க்கப்பட்டு உங்கள் 1xBet கணக்கில் நேரடியாக சேர்க்கப்படும்.</string>
+    <string name="faq_q2">திரும்பப் பெற எவ்வளவு நேரம் ஆகும்?</string>
+    <string name="faq_a2">உங்கள் 1xBet ரகசிய குறியீடு சரிபார்க்கப்பட்டு 5-15 நிமிடங்களுக்குள் உங்கள் வங்கி கணக்கிற்கு பணம் மாற்றப்படும்.</string>
+    <string name="faq_q3">திரும்பப் பெறுவதற்கான எல்லைகள் என்ன?</string>
+    <string name="faq_a3">குறைந்தபட்ச தொகை LKR 1,000 மற்றும் ஒரு கோரிக்கைக்கு அதிகபட்ச தொகை LKR 500,000 ஆகும்.</string>
+    <string name="faq_q4">வங்கி பரிமாற்றக் குறிப்பில் நான் என்ன உள்ளிட வேண்டும்?</string>
+    <string name="faq_a4">உங்கள் வைப்பை உடனடியாக அடையாளம் கண்டு சேர்க்க, பரிமாற்றக் குறிப்பில் எப்போதும் உங்கள் 1xBet பிளேயர் ஐடியை உள்ளிடவும்.</string>
+    <string name="faq_q5">திரும்பப் பெறுவதற்கான 4 இலக்க ரகசிய குறியீட்டை எங்கே பெறலாம்?</string>
+    <string name="faq_a5">1xBet பயன்பாட்டில் 1xBet Cash ஐத் தேர்ந்தெடுத்து (முகவரி: Walasmulla, Beliaththa Road 24/7) கோரிக்கை விடுங்கள். 1xBet ஆல் அங்கீகரிக்கப்பட்டதும், 4 இலக்க ரகசிய குறியீடு உங்கள் 1xBet கணக்கில் காட்டப்படும்.</string>
+    <string name="faq_q6">எனது வங்கி விவரங்கள் மற்றும் தரவு பாதுகாப்பானவையா?</string>
+    <string name="faq_a6">ஆம்! அனைத்து பரிவர்த்தனை விவரங்களும் பாதுகாப்பாக வைக்கப்பட்டு பணப் பரிமாற்றத்திற்கு மட்டுமே பயன்படுத்தப்படுகின்றன. உங்கள் 1xBet கடவுச்சொல் அல்லது பின்னை நாங்கள் ஒருபோதும் கேட்க மாட்டோம்.</string>
+    <!-- Support Dialog -->
+    <string name="contact_support_btn">வாடிக்கையாளர் ஆதரவைத் தொடர்பு கொள்ளவும்</string>
+    <string name="support_dialog_title">24/7 அதிகாரப்பூர்வ Fast Xbet ஆதரவு</string>
+    <string name="support_dialog_subtitle">உங்கள் வைப்பு அல்லது கணக்கு குறித்து உடனடி உதவி தேவையா? எங்கள் ஆதரவுக் குழுவை நேரடியாகத் தொடர்பு கொள்ளவும்:</string>
+    <string name="support_whatsapp">WhatsApp நேரலை ஆதரவு</string>
+    <string name="support_telegram">Telegram அதிகாரப்பூர்வ ஆதரவு</string>
+    <string name="support_close">மூடு</string>
+
+    <!-- Top Promo Banner -->
+    <string name="top_promo_badge">🔥 150% வரவேற்பு போனஸ்</string>
+    <string name="top_promo_title">1xBet இல் 150% போனஸ் பெறுங்கள்</string>
+    <string name="top_promo_desc">1xBet இல் பதிவு செய்யும்போது அதிகாரப்பூர்வ ப்ரோமோ குறியீடான VGSL ஐப் பயன்படுத்தி 150% போனஸைப் பெறுங்கள்!</string>
+    <string name="top_promo_cta">150% போனஸைப் பெறுங்கள்</string>
+</resources>

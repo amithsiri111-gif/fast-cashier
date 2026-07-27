@@ -1,0 +1,232 @@
+<resources>
+    <string name="app_name">Fast Xbet Cashier</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_deposit">Deposit</string>
+    <string name="nav_withdraw">Withdraw</string>
+    <string name="nav_history">History</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_admin">Admin Panel</string>
+    
+    <!-- Home / Main Menu -->
+    <string name="welcome_title">Fast Xbet Official AI Support</string>
+    <string name="welcome_subtitle">Fast, secure 1xBet deposits and cash withdrawals for Sri Lanka</string>
+    <string name="menu_deposit">Cash Deposit</string>
+    <string name="menu_deposit_desc">Fast 5-15 min deposit directly to 1xBet account</string>
+    <string name="menu_withdraw">Cash Withdrawal</string>
+    <string name="menu_withdraw_desc">Withdraw funds via 1xBet Cash to your bank</string>
+    <string name="menu_registration">1xBet Registration &amp; Bonus</string>
+    <string name="menu_registration_desc">Get 150% bonus on your first deposit with promo code</string>
+    <string name="menu_tips">Daily Free Tips</string>
+    <string name="menu_tips_desc">Join our official Telegram channel for daily betting tips</string>
+    <string name="menu_guide">User Guide</string>
+    <string name="menu_guide_desc">Step-by-step walkthrough for deposits &amp; withdrawals</string>
+    <string name="menu_privacy">Privacy Policy</string>
+    <string name="menu_privacy_desc">Read how we protect your information</string>
+    <string name="home_section_cashier">Official Cashier Services</string>
+    <string name="hero_cashier_badge">⚡ 24/7 OFFICIAL CASHIER</string>
+    <string name="promo_bonus_subtitle">Get 150% First Deposit Bonus</string>
+
+    <!-- Promo Code & External Links -->
+    <string name="promo_code_title">Official Promo Code</string>
+    <string name="promo_code_value">VGSL</string>
+    <string name="copy_promo">Copy Code</string>
+    <string name="promo_copied">Promo code copied to clipboard!</string>
+    <string name="register_now">Register on 1xBet</string>
+    <string name="join_telegram">Join Free Tips Telegram</string>
+    
+    <!-- Deposit Flow -->
+    <string name="deposit_title">Deposit Accounts</string>
+    <string name="select_bank_prompt">Select a bank account below to view transfer details:</string>
+    <string name="bank_account_number">Account No:</string>
+    <string name="bank_account_holder">Holder:</string>
+    <string name="bank_branch">Branch:</string>
+    <string name="deposit_instructions_title">Transfer Instructions</string>
+    <string name="deposit_step1">1. Transfer funds to the selected bank account above.</string>
+    <string name="deposit_step2">2. In Remark/Reference, type your 1xBet Player ID.</string>
+    <string name="deposit_step3">3. Upload a clear receipt photo/screenshot below.</string>
+    <string name="upload_slip_btn">Upload Deposit Receipt</string>
+    <string name="analyzing_slip">AI Analyzing receipt... please wait</string>
+    <string name="analyzing_extracting">Extracting Bank, Amount, Txn Reference &amp; Date</string>
+    <string name="slip_detected_title">Receipt Analyzed</string>
+    <string name="detected_amount">Amount Detected:</string>
+    <string name="detected_bank">Bank Identified:</string>
+    <string name="enter_player_id">Enter 1xBet Player ID (5–12 digits):</string>
+    <string name="player_id_placeholder">e.g. 12345678</string>
+    <string name="confirm_deposit_btn">Submit Deposit Request</string>
+    <string name="deposit_success_title">Deposit Request Submitted!</string>
+    <string name="deposit_success_msg">Your request has been received. Our team will review and credit your 1xBet account within 5–15 minutes.</string>
+    <string name="step_x_of_y">Step %1$d of %2$d</string>
+    <string name="label_txn_reference">Txn Reference:</string>
+    <string name="change_image">Change Image</string>
+    <string name="copied_account_toast">Copied Account: %1$s</string>
+    
+    <!-- Withdraw Flow -->
+    <string name="withdraw_title">Cash Withdrawal</string>
+    <string name="withdraw_address_info">Withdrawal Method: 1xBet Cash\nCity: Walasmulla | Street: Beliaththa Road 24/7</string>
+    <string name="withdraw_min_max">Allowed range: LKR 1,000 – LKR 500,000</string>
+    <string name="saved_bank_notice">Card details auto-filled from your previous saved withdrawal.</string>
+    <string name="label_player_id">1xBet Player ID</string>
+    <string name="label_amount">Amount (LKR)</string>
+    <string name="label_secret_code">4-Digit Secret Code</string>
+    <string name="label_bank_name">Bank Name</string>
+    <string name="label_acc_holder">Account Holder Name</string>
+    <string name="label_acc_number">Account Number</string>
+    <string name="label_branch">Branch Name</string>
+    <string name="submit_withdrawal_btn">Submit Withdrawal Request</string>
+    <string name="withdraw_success_title">Withdrawal Request Received!</string>
+    <string name="withdraw_success_msg">Our team will verify your secret code and transfer funds to your bank within 5–15 minutes.</string>
+    <string name="withdraw_bank_details_header">Bank Details for Transfer:</string>
+    <string name="btn_autofill">Auto-Fill</string>
+    <string name="pending_withdraw_exists_header">⚠️ PENDING Withdrawal Request Exists</string>
+    <string name="pending_withdraw_exists_details">ID: #%1$d | Amount: %2$s | Bank: %3$s\nPlease wait for admin approval before creating a new request.</string>
+    <string name="cancel_request_id">Cancel Request #%1$d</string>
+
+    <!-- History -->
+    <string name="history_title">Transaction History</string>
+    <string name="tab_deposits">Deposits</string>
+    <string name="tab_withdrawals">Withdrawals</string>
+    <string name="no_transactions">No transaction records found.</string>
+    <string name="status_approved">APPROVED</string>
+    <string name="status_completed">COMPLETED</string>
+    <string name="status_pending">PENDING</string>
+    <string name="status_rejected">REJECTED</string>
+    <string name="status_cancelled">CANCELLED</string>
+    <string name="cancel_withdrawal_btn">Cancel Request</string>
+    <string name="withdrawal_cancelled_msg">Withdrawal request cancelled successfully.</string>
+    <string name="deposit_id_title">Deposit #%1$d</string>
+    <string name="withdrawal_id_title">Withdrawal #%1$d</string>
+    <string name="history_bank_player_info">Bank: %1$s | Player ID: %2$s</string>
+    <string name="history_ref_info">Ref: %1$s</string>
+    <string name="history_bank_acc_info">Bank: %1$s | Acc: %2$s</string>
+    <string name="history_holder_player_info">Holder: %1$s | Player ID: %2$s</string>
+    <string name="history_payout_ref_info">Payout Ref: %1$s</string>
+    <string name="history_reason_info">Reason: %1$s</string>
+
+    <!-- Scam Warning -->
+    <string name="scam_warning_title">Security Warning</string>
+    <string name="scam_warning_msg">Fast Xbet Official will NEVER ask for your 1xBet Account Password, PIN, or OTP. Never share credentials with anyone!</string>
+
+    <!-- Validation & Toast Errors -->
+    <string name="err_invalid_player_id">Player ID must be between 5 and 12 digits.</string>
+    <string name="err_invalid_amount">Amount must be between LKR 1,000 and LKR 500,000.</string>
+    <string name="err_empty_field">Please fill in all required fields.</string>
+    <string name="err_pending_withdraw_exists">You already have a PENDING withdrawal request (#%1$s %2$s). Please wait for approval.</string>
+    <string name="err_duplicate_slip">This receipt has already been submitted.</string>
+    <string name="err_invalid_file">Please upload a valid JPG or PNG image (Max 5MB). PDFs are not supported.</string>
+    <string name="err_submit_deposit_failed">Failed to submit deposit. Please try again.</string>
+    <string name="err_submit_withdraw_failed">Failed to submit withdrawal request.</string>
+    <string name="err_cancel_withdraw_failed">Could not cancel withdrawal #%1$d.</string>
+    <string name="err_invalid_admin_pin">Invalid Admin Access PIN</string>
+    <string name="msg_deposit_submitted">Deposit Request Submitted!</string>
+    <string name="msg_withdraw_submitted">Withdrawal Request Submitted!</string>
+    <string name="msg_withdraw_cancelled">Withdrawal request #%1$d cancelled.</string>
+    <string name="msg_bank_cleared">Saved bank details cleared.</string>
+    <string name="msg_admin_access_granted">Admin Panel Access Granted</string>
+    <string name="msg_deposit_approved">Deposit #%1$d Approved</string>
+    <string name="msg_deposit_rejected">Deposit #%1$d Rejected</string>
+    <string name="msg_withdraw_approved">Withdrawal #%1$d Approved / Completed</string>
+    <string name="msg_withdraw_rejected">Withdrawal #%1$d Rejected</string>
+
+    <!-- Settings / Profile -->
+    <string name="profile_title">Profile &amp; Settings</string>
+    <string name="select_language">App Language</string>
+    <string name="lang_english">English 🇬🇧</string>
+    <string name="lang_sinhala">සිංහල 🇱🇰</string>
+    <string name="lang_tamil">தமிழ் 🇱🇰</string>
+    <string name="saved_bank_details">Saved Bank Details</string>
+    <string name="clear_saved_bank">Clear Saved Bank</string>
+    <string name="btn_clear">Clear</string>
+    <string name="label_bank">Bank:</string>
+    <string name="label_account_holder">Account Holder:</string>
+    <string name="label_account_number">Account Number:</string>
+    <string name="label_branch_col">Branch:</string>
+    <string name="no_saved_bank_msg">No saved bank details yet. Submit a withdrawal request to save automatically.</string>
+    <string name="btn_view_guide">View Walkthrough &amp; Guide</string>
+    <string name="admin_access">Admin Access</string>
+    <string name="btn_open_admin">Open Admin Management Panel</string>
+    <string name="btn_logout">Logout</string>
+
+    <!-- Admin Panel -->
+    <string name="admin_title">Admin Management Panel</string>
+    <string name="admin_pin_prompt">Enter Admin Access PIN:</string>
+    <string name="admin_login_btn">Login to Admin</string>
+    <string name="err_invalid_pin">Invalid Admin PIN</string>
+    <string name="admin_stats">System Statistics</string>
+    <string name="admin_total_users">Total Users:</string>
+    <string name="admin_pending_deposits">Pending Deposits:</string>
+    <string name="admin_pending_withdrawals">Pending Withdrawals:</string>
+    <string name="approve_btn">Approve</string>
+    <string name="reject_btn">Reject</string>
+    <string name="payout_ref_prompt">Enter Payout Txn Reference:</string>
+    <string name="rejection_reason_prompt">Enter Rejection Reason:</string>
+    <string name="stat_users">Users</string>
+    <string name="stat_pending_dep">Pending Dep</string>
+    <string name="stat_pending_wdr">Pending Wdr</string>
+    <string name="admin_tab_deposits">Deposits (%1$d)</string>
+    <string name="admin_tab_withdrawals">Withdrawals (%1$d)</string>
+    <string name="admin_security_access">Admin Security Access</string>
+    <string name="payout_ref_placeholder">Payout Ref (e.g. TRF984210)</string>
+    
+    <!-- User Guide -->
+    <string name="guide_section1_title">1. Cash Deposit Walkthrough</string>
+    <string name="guide_section1_step1">Tap Deposit on the bottom menu bar.</string>
+    <string name="guide_section1_step2">Choose your preferred bank account (BOC, People\'s Bank, Sampath Bank, LOLC Finance, iPay).</string>
+    <string name="guide_section1_step3">Transfer funds to the shown account number. Make sure to put your 1xBet Player ID in the transfer remark.</string>
+    <string name="guide_section1_step4">Upload a clear receipt photo or screenshot (JPG/PNG).</string>
+    <string name="guide_section1_step5">The AI scanner verifies the receipt details. Confirm your 1xBet Player ID and submit.</string>
+    <string name="guide_section1_step6">Funds will be credited to your 1xBet account within 5–15 minutes!</string>
+
+    <string name="guide_section2_title">2. Cash Withdrawal Walkthrough</string>
+    <string name="guide_section2_step1">Open 1xBet app -&gt; Withdraw -&gt; Select 1xBet Cash.</string>
+    <string name="guide_section2_step2">Choose Address: Walasmulla, Beliaththa Road 24/7.</string>
+    <string name="guide_section2_step3">Enter amount (LKR 1,000 - 500,000) and obtain your 4-digit Secret Code.</string>
+    <string name="guide_section2_step4">Open Fast Xbet Cashier app -&gt; Tap Withdraw on bottom menu.</string>
+    <string name="guide_section2_step5">Fill in your Player ID, Secret Code, Amount, and Bank account details.</string>
+    <string name="guide_section2_step6">Tap Submit. Once approved, funds will be transferred to your bank within 5–15 minutes!</string>
+
+    <string name="guide_section3_title">3. 1xBet Registration &amp; 150% Bonus</string>
+    <string name="guide_section3_step1">Tap \'Register on 1xBet\' on the home screen.</string>
+    <string name="guide_section3_step2">Complete registration details.</string>
+    <string name="guide_section3_step3">Use Promo Code: VGSL</string>
+    <string name="guide_section3_step4">Receive 150% Bonus on your first deposit!</string>
+
+    <string name="guide_section4_title">4. Daily Free Tips</string>
+    <string name="guide_section4_step1">Tap \'Join Free Tips Telegram\' on the home screen.</string>
+    <string name="guide_section4_step2">Join our official Telegram community channel.</string>
+    <string name="guide_section4_step3">Get daily free betting tips and predictions!</string>
+
+    <!-- Privacy Policy -->
+    <string name="privacy_title">Privacy Policy</string>
+    <string name="privacy_body">🔒 PRIVACY POLICY — Fast Xbet Official Sri Lanka\n\n1. Information We Collect:\n• Your 1xBet User ID\n• Deposit receipts to confirm transactions\n• Security codes for withdrawals\n• Your bank account details (for fund transfers only)\n\n2. How We Use Information:\n• Credit funds to your 1xBet account\n• Process and transfer approved withdrawals to your bank account\n\n3. Data Protection:\n• We never sell or share your personal information with third parties\n• Transaction data is kept strictly confidential\n\n4. Disclaimer:\n• Our service is limited to facilitating deposits and withdrawals\n• We are not responsible for technical issues with 1xBet or losses from gameplay\n• Keeping your 1xBet account credentials secure is your responsibility\n\n5. Contact Us:\n📞 +94765865387\n© 2026 Fast Xbet Official Sri Lanka. All rights reserved.</string>
+
+    <!-- FAQ Accordion -->
+    <string name="faq_title">Frequently Asked Questions (FAQ)</string>
+    <string name="faq_subtitle">Quick answers to common deposit and withdrawal questions</string>
+    <string name="faq_q1">How long does a deposit take?</string>
+    <string name="faq_a1">Deposits are reviewed and credited directly to your 1xBet account within 5–15 minutes after receipt submission.</string>
+    <string name="faq_q2">How long does a withdrawal take?</string>
+    <string name="faq_a2">Withdrawals are verified against your 1xBet Secret Code and transferred to your bank account within 5–15 minutes.</string>
+    <string name="faq_q3">What are the withdrawal limits?</string>
+    <string name="faq_a3">The minimum withdrawal amount is LKR 1,000 and the maximum is LKR 500,000 per request.</string>
+    <string name="faq_q4">What should I put in the bank transfer remark?</string>
+    <string name="faq_a4">Always type your 1xBet Player ID in the bank transfer remark or reference so our team can immediately identify and credit your deposit.</string>
+    <string name="faq_q5">Where do I get the 4-digit Secret Code for withdrawal?</string>
+    <string name="faq_a5">In the 1xBet app, request a withdrawal via \'1xBet Cash\' choosing Address: Walasmulla, Beliaththa Road 24/7. Once approved by 1xBet, a 4-digit secret code will be displayed in your 1xBet account.</string>
+    <string name="faq_q6">Are my bank details and personal data safe?</string>
+    <string name="faq_a6">Yes! All transaction details are strictly encrypted and used solely for fund transfers. We never ask for your 1xBet password or PIN.</string>
+    <!-- Support Dialog -->
+    <string name="contact_support_btn">Contact Customer Support</string>
+    <string name="support_dialog_title">24/7 Official Fast Xbet Support</string>
+    <string name="support_dialog_subtitle">Need immediate assistance with your deposit or account? Connect with our support team directly:</string>
+    <string name="support_whatsapp">WhatsApp Live Chat</string>
+    <string name="support_telegram">Telegram Official Support</string>
+    <string name="support_close">Close</string>
+
+    <!-- Top Promo Banner -->
+    <string name="top_promo_badge">🔥 150% WELCOME BONUS</string>
+    <string name="top_promo_title">Get 150% Bonus on 1xBet</string>
+    <string name="top_promo_desc">Use official promo code VGSL when registering on 1xBet to claim up to 150% bonus!</string>
+    <string name="top_promo_cta">Claim 150% Bonus Now</string>
+</resources>

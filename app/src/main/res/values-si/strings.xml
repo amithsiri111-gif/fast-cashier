@@ -1,0 +1,232 @@
+<resources>
+    <string name="app_name">Fast Xbet Cashier</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">ප්‍රධාන පිටුව</string>
+    <string name="nav_deposit">තැන්පතු</string>
+    <string name="nav_withdraw">ලබාගැනීම්</string>
+    <string name="nav_history">වාර්තා</string>
+    <string name="nav_profile">ගිණුම</string>
+    <string name="nav_admin">Admin පුවරුව</string>
+    
+    <!-- Home / Main Menu -->
+    <string name="welcome_title">Fast Xbet නිල AI සහායක</string>
+    <string name="welcome_subtitle">ශ්‍රී ලංකාව සඳහා වේගවත්, සුරක්ෂිත 1xBet තැන්පතු සහ මුදල් ලබාගැනීම්</string>
+    <string name="menu_deposit">තැන්පතු කිරීම (Deposit)</string>
+    <string name="menu_deposit_desc">මිනිත්තු 5-15ක් ඇතුළත 1xBet ගිණුමට තැන්පතු කරන්න</string>
+    <string name="menu_withdraw">මුදල් ලබාගැනීම (Withdraw)</string>
+    <string name="menu_withdraw_desc">1xBet Cash හරහා ඔබේ බැංකුවට මුදල් ලබාගන්න</string>
+    <string name="menu_registration">1xBet ලියාපදිංචිය සහ බෝනස්</string>
+    <string name="menu_registration_desc">Promo code භාවිතා කර පළමු තැන්පතුවට 150% බෝනස් ලබාගන්න</string>
+    <string name="menu_tips">දිනපතා නොමිලේ Tips</string>
+    <string name="menu_tips_desc">දිනපතා නොමිලේ Betting Tips සඳහා අපගේ Telegram සමූහයට එකතු වන්න</string>
+    <string name="menu_guide">භාවිතා කරන ආකාරය (Guide)</string>
+    <string name="menu_guide_desc">තැන්පතු සහ ලබාගැනීම් සඳහා පියවරෙන් පියවර උපදෙස්</string>
+    <string name="menu_privacy">රහස්‍යතා ප්‍රතිපත්තිය</string>
+    <string name="menu_privacy_desc">ඔබේ තොරතුරු සුරක්ෂිතව තබාගන්නා ආකාරය කියවන්න</string>
+    <string name="home_section_cashier">නිල කැෂියර් සේවාවන්</string>
+    <string name="hero_cashier_badge">⚡ 24/7 නිල කැෂියර් සේවාව</string>
+    <string name="promo_bonus_subtitle">පළමු තැන්පතුවට 150% මුදල් බෝනස් ලබාගන්න</string>
+
+    <!-- Promo Code & External Links -->
+    <string name="promo_code_title">නිල Promo Code එක</string>
+    <string name="promo_code_value">VGSL</string>
+    <string name="copy_promo">Code එක Copy කරන්න</string>
+    <string name="promo_copied">Promo code එක copy කරගන්නා ලදී!</string>
+    <string name="register_now">1xBet හි ලියාපදිංචි වන්න</string>
+    <string name="join_telegram">Free Tips Telegram සමූහයට එකතු වන්න</string>
+    
+    <!-- Deposit Flow -->
+    <string name="deposit_title">තැන්පතු ගිණුම්</string>
+    <string name="select_bank_prompt">මුදල් එවිය යුතු බැංකු ගිණුම තෝරන්න:</string>
+    <string name="bank_account_number">ගිණුම් අංකය:</string>
+    <string name="bank_account_holder">ගිණුම් හිමියා:</string>
+    <string name="bank_branch">ශාඛාව:</string>
+    <string name="deposit_instructions_title">තැන්පතු උපදෙස්</string>
+    <string name="deposit_step1">1. ඉහත පෙන්වා ඇති බැංකු ගිණුමකට මුදල් තැන්පත් කරන්න.</string>
+    <string name="deposit_step2">2. Remark / Reference ලෙස ඔබේ 1xBet Player ID එක යොදන්න.</string>
+    <string name="deposit_step3">3. රිසිට්පතේ පැහැදිලි ඡායාරූපයක් (Slip) Upload කරන්න.</string>
+    <string name="upload_slip_btn">රිසිට්පත Upload කරන්න</string>
+    <string name="analyzing_slip">AI මගින් රිසිට්පත පරීක්ෂා කරයි... කරුණාකර රැඳී සිටින්න</string>
+    <string name="analyzing_extracting">බැංකුව, මුදල, රිසිට්පත් අංකය සහ දිනය පරීක්ෂා කරයි</string>
+    <string name="slip_detected_title">රිසිට්පත පරීක්ෂා කරන ලදී</string>
+    <string name="detected_amount">තැන්පතු මුදල:</string>
+    <string name="detected_bank">තෝරාගත් බැංකුව:</string>
+    <string name="enter_player_id">ඔබගේ 1xBet Player ID එක ඇතුළත් කරන්න (ඉලක්කම් 5–12):</string>
+    <string name="player_id_placeholder">උදා: 12345678</string>
+    <string name="confirm_deposit_btn">තැන්පතු ඉල්ලීම යොමු කරන්න</string>
+    <string name="deposit_success_title">තැන්පතු ඉල්ලීම භාර ගන්නා ලදී!</string>
+    <string name="deposit_success_msg">ඔබගේ ඉල්ලීම ලැබී ඇත. මිනිත්තු 5-15ක් ඇතුළත මුදල් ඔබේ 1xBet ගිණුමට බැර වේ.</string>
+    <string name="step_x_of_y">පියවර %1$d / %2$d</string>
+    <string name="label_txn_reference">ගනුදෙනු අංකය (Ref):</string>
+    <string name="change_image">ඡායාරූපය වෙනස් කරන්න</string>
+    <string name="copied_account_toast">ගිණුම් අංකය Copy කරගන්නා ලදී: %1$s</string>
+
+    <!-- Withdraw Flow -->
+    <string name="withdraw_title">මුදල් ලබාගැනීම</string>
+    <string name="withdraw_address_info">ලබාගැනීමේ ක්‍රමය: 1xBet Cash\nනගරය: Walasmulla | පාර: Beliaththa Road 24/7</string>
+    <string name="withdraw_min_max">අවම / උපරිම සීමාව: LKR 1,000 – LKR 500,000</string>
+    <string name="saved_bank_notice">කලින් සුරැකි බැංකු විස්තර මගින් ස්වයංක්‍රීයව පිරවිණි.</string>
+    <string name="label_player_id">1xBet Player ID</string>
+    <string name="label_amount">මුදල (LKR)</string>
+    <string name="label_secret_code">ඉලක්කම් 4ක Secret Code එක</string>
+    <string name="label_bank_name">බැංකුවේ නම</string>
+    <string name="label_acc_holder">ගිණුම් හිමියාගේ නම</string>
+    <string name="label_acc_number">ගිණුම් අංකය</string>
+    <string name="label_branch">ශාඛාව</string>
+    <string name="submit_withdrawal_btn">මුදල් ලබාගැනීමේ ඉල්ලීම යොමු කරන්න</string>
+    <string name="withdraw_success_title">ඉල්ලීම භාර ගන්නා ලදී!</string>
+    <string name="withdraw_success_msg">ඔබේ Secret Code එක පරීක්ෂා කර මිනිත්තු 5-15ක් ඇතුළත මුදල් ඔබේ බැංකු ගිණුමට තැන්පත් කරනු ලැබේ.</string>
+    <string name="withdraw_bank_details_header">මුදල් එවිය යුතු බැංකු විස්තර:</string>
+    <string name="btn_autofill">ස්වයංක්‍රීයව පිරවීම</string>
+    <string name="pending_withdraw_exists_header">⚠️ තවමත් ක්‍රියාත්මක වන (PENDING) Withdrawal ඉල්ලීමක් ඇත</string>
+    <string name="pending_withdraw_exists_details">අංකය: #%1$d | මුදල: %2$s | බැංකුව: %3$s\nනවු ඉල්ලීමක් කිරීමට පෙර පවතින ඉල්ලීම අනුමත වන තෙක් රැඳී සිටින්න.</string>
+    <string name="cancel_request_id">ඉල්ලීම #%1$d අවලංගු කරන්න</string>
+
+    <!-- History -->
+    <string name="history_title">ගනුදෙනු වාර්තා</string>
+    <string name="tab_deposits">තැන්පතු</string>
+    <string name="tab_withdrawals">ලබාගැනීම්</string>
+    <string name="no_transactions">වාර්තා කිසිවක් හමු නොවීය.</string>
+    <string name="status_approved">අනුමතයි</string>
+    <string name="status_completed">සම්පූර්ණයි</string>
+    <string name="status_pending">සක්‍රියයි</string>
+    <string name="status_rejected">ප්‍රතික්ෂේපයි</string>
+    <string name="status_cancelled">අවලංගුයි</string>
+    <string name="cancel_withdrawal_btn">ඉල්ලීම අවලංගු කරන්න</string>
+    <string name="withdrawal_cancelled_msg">ලබාගැනීමේ ඉල්ලීම සාර්ථකව අවලංගු කරන ලදී.</string>
+    <string name="deposit_id_title">තැන්පතු #%1$d</string>
+    <string name="withdrawal_id_title">මුදල් ලබාගැනීම #%1$d</string>
+    <string name="history_bank_player_info">බැංකුව: %1$s | Player ID: %2$s</string>
+    <string name="history_ref_info">අංකය: %1$s</string>
+    <string name="history_bank_acc_info">බැංකුව: %1$s | ගිණුම: %2$s</string>
+    <string name="history_holder_player_info">හිමියා: %1$s | Player ID: %2$s</string>
+    <string name="history_payout_ref_info">ගෙවීම් Ref: %1$s</string>
+    <string name="history_reason_info">හේතුව: %1$s</string>
+
+    <!-- Scam Warning -->
+    <string name="scam_warning_title">ආරක්ෂිත අනතුරු ඇඟවීම</string>
+    <string name="scam_warning_msg">Fast Xbet කිසිවිටෙකත් ඔබේ 1xBet Password, PIN හෝ OTP ඉල්ලා නොසිටී. ඔබේ මුරපද කිසිවෙකුට ලබා නොදෙන්න!</string>
+
+    <!-- Validation & Toast Errors -->
+    <string name="err_invalid_player_id">Player ID එක ඉලක්කම් 5ත් 12ත් අතර විය යුතුය.</string>
+    <string name="err_invalid_amount">මුදල LKR 1,000 සහ LKR 500,000 අතර විය යුතුය.</string>
+    <string name="err_empty_field">කරුණාකර සියලුම විස්තර නිවැරදිව පුරවන්න.</string>
+    <string name="err_pending_withdraw_exists">ඔබට තවමත් අනුමත නොවූ Withdrawal ඉල්ලීමක් ඇත (#%1$s %2$s).</string>
+    <string name="err_duplicate_slip">මෙම රිසිට්පත් අංකය දැනටමත් යොමු කර ඇත.</string>
+    <string name="err_invalid_file">කරුණාකර වලංගු JPG හෝ PNG පින්තූරයක් Upload කරන්න (Up to 5MB). PDF භාරගනු නොලැබේ.</string>
+    <string name="err_submit_deposit_failed">තැන්පතු ඉල්ලීම යොමු කිරීමට අපොහොසත් විය. නැවත උත්සාහ කරන්න.</string>
+    <string name="err_submit_withdraw_failed">මුදල් ලබාගැනීමේ ඉල්ලීම යොමු කිරීමට අපොහොසත් විය.</string>
+    <string name="err_cancel_withdraw_failed">ලබාගැනීමේ ඉල්ලීම #%1$d අවලංගු කිරීමට නොහැකි විය.</string>
+    <string name="err_invalid_admin_pin">වැරදි Admin Access PIN අංකයකි</string>
+    <string name="msg_deposit_submitted">තැන්පතු ඉල්ලීම සාර්ථකව යොමු කරන ලදී!</string>
+    <string name="msg_withdraw_submitted">මුදල් ලබාගැනීමේ ඉල්ලීම සාර්ථකව යොමු කරන ලදී!</string>
+    <string name="msg_withdraw_cancelled">මුදල් ලබාගැනීමේ ඉල්ලීම #%1$d අවලංගු කරන ලදී.</string>
+    <string name="msg_bank_cleared">සුරැකි බැංකු විස්තර ඉවත් කරන ලදී.</string>
+    <string name="msg_admin_access_granted">Admin පුවරුවට ප්‍රවේශය ලැබිණි</string>
+    <string name="msg_deposit_approved">තැන්පතු #%1$d අනුමත කරන ලදී</string>
+    <string name="msg_deposit_rejected">තැන්පතු #%1$d ප්‍රතික්ෂේප කරන ලදී</string>
+    <string name="msg_withdraw_approved">ලබාගැනීම #%1$d අනුමත කර සම්පූර්ණ කරන ලදී</string>
+    <string name="msg_withdraw_rejected">ලබාගැනීම #%1$d ප්‍රතික්ෂේප කරන ලදී</string>
+
+    <!-- Settings / Profile -->
+    <string name="profile_title">ගිණුම සහ සැකසුම්</string>
+    <string name="select_language">ඇප් එකෙහි භාෂාව</string>
+    <string name="lang_english">English 🇬🇧</string>
+    <string name="lang_sinhala">සිංහල 🇱🇰</string>
+    <string name="lang_tamil">தமிழ் 🇱🇰</string>
+    <string name="saved_bank_details">සුරැකි බැංකු විස්තර</string>
+    <string name="clear_saved_bank">සුරැකි බැංකු විස්තර ඉවත් කරන්න</string>
+    <string name="btn_clear">ඉවත් කරන්න</string>
+    <string name="label_bank">බැංකුව:</string>
+    <string name="label_account_holder">ගිණුම් හිමියා:</string>
+    <string name="label_account_number">ගිණුම් අංකය:</string>
+    <string name="label_branch_col">ශාඛාව:</string>
+    <string name="no_saved_bank_msg">තවමත් සුරැකි බැංකු විස්තර නොමැත. Withdrawal ඉල්ලීමක් ඉදිරිපත් කළ පසු ස්වයංක්‍රීයව සුරැකෙනු ඇත.</string>
+    <string name="btn_view_guide">භාවිතා කරන ආකාරය (Guide) බලන්න</string>
+    <string name="admin_access">Admin පිවිසුම</string>
+    <string name="btn_open_admin">Admin පුවරුවට පිවිසෙන්න</string>
+    <string name="btn_logout">පිටවෙන්න (Logout)</string>
+
+    <!-- Admin Panel -->
+    <string name="admin_title">Admin පාලන පුවරුව</string>
+    <string name="admin_pin_prompt">Admin PIN අංකය ඇතුළත් කරන්න:</string>
+    <string name="admin_login_btn">Admin පුවරුවට පිවිසෙන්න</string>
+    <string name="err_invalid_pin">වැරදි Admin PIN අංකයකි</string>
+    <string name="admin_stats">පද්ධති වාර්තා</string>
+    <string name="admin_total_users">මුළු පරිශීලකයින්:</string>
+    <string name="admin_pending_deposits">Pending තැන්පතු:</string>
+    <string name="admin_pending_withdrawals">Pending ලබාගැනීම්:</string>
+    <string name="approve_btn">අනුමත කරන්න</string>
+    <string name="reject_btn">ප්‍රතික්ෂේප කරන්න</string>
+    <string name="payout_ref_prompt">ගෙවීම් Ref අංකය ඇතුළත් කරන්න:</string>
+    <string name="rejection_reason_prompt">ප්‍රතික්ෂේප කිරීමට හේතුව:</string>
+    <string name="stat_users">පරිශීලකයින්</string>
+    <string name="stat_pending_dep">Pending තැන්පතු</string>
+    <string name="stat_pending_wdr">Pending ලබාගැනීම්</string>
+    <string name="admin_tab_deposits">තැන්පතු (%1$d)</string>
+    <string name="admin_tab_withdrawals">ලබාගැනීම් (%1$d)</string>
+    <string name="admin_security_access">Admin ආරක්ෂිත පිවිසුම</string>
+    <string name="payout_ref_placeholder">ගෙවීම් Ref (උදා: TRF984210)</string>
+
+    <!-- User Guide -->
+    <string name="guide_section1_title">1. Cash Deposit සිදු කරන ආකාරය</string>
+    <string name="guide_section1_step1">පහළ පුවරුවේ Deposit ඔබන්න.</string>
+    <string name="guide_section1_step2">ඔබට අවශ්‍ය බැංකු ගිණුම තෝරන්න (BOC, People\'s Bank, Sampath, LOLC Finance, iPay).</string>
+    <string name="guide_section1_step3">පෙන්වා ඇති ගිණුම් අංකයට මුදල් තැන්පත් කරන්න. Remark එකට ඔබේ 1xBet Player ID එක ඇතුළත් කරන්න.</string>
+    <string name="guide_section1_step4">පැහැදිලි රිසිට්පත් ඡායාරූපයක් (Slip) Upload කරන්න.</string>
+    <string name="guide_section1_step5">AI ස්කෑනරය මගින් රිසිට්පත පරීක්ෂා කරයි. Player ID එක තහවුරු කර Submit කරන්න.</string>
+    <string name="guide_section1_step6">මිනිත්තු 5-15ක් ඇතුළත මුදල් ඔබේ 1xBet ගිණුමට බැර වේ!</string>
+
+    <string name="guide_section2_title">2. Cash Withdrawal සිදු කරන ආකාරය</string>
+    <string name="guide_section2_step1">1xBet app එක -&gt; Withdraw -&gt; 1xBet Cash තෝරන්න.</string>
+    <string name="guide_section2_step2">ලිපිනය තෝරන්න: Walasmulla, Beliaththa Road 24/7.</string>
+    <string name="guide_section2_step3">මුදල ඇතුළත් කර ඔබේ ඉලක්කම් 4ක Secret Code එක ලබාගන්න.</string>
+    <string name="guide_section2_step4">Fast Xbet Cashier app එකෙන් Withdraw පිටුවට යන්න.</string>
+    <string name="guide_section2_step5">ඔබගේ Player ID, Secret Code, මුදල සහ බැංකු විස්තර ඇතුළත් කරන්න.</string>
+    <string name="guide_section2_step6">Submit කරන්න. අනුමත වූ පසු මිනිත්තු 5-15ක් ඇතුළත මුදල් ඔබේ බැංකු ගිණුමට ලැබේ!</string>
+
+    <string name="guide_section3_title">3. 1xBet ලියාපදිංචිය සහ 150% Bonus</string>
+    <string name="guide_section3_step1">ප්‍රධාන පිටුවේ \'1xBet හි ලියාපදිංචි වන්න\' ඔබන්න.</string>
+    <string name="guide_section3_step2">ලියාපදිංචි විස්තර සම්පූර්ණ කරන්න.</string>
+    <string name="guide_section3_step3">Promo Code එක ලෙස VGSL භාවිතා කරන්න</string>
+    <string name="guide_section3_step4">පළමු තැන්පතුවට 150%ක බෝනස් එකක් ලබාගන්න!</string>
+
+    <string name="guide_section4_title">4. දිනපතා නොමිලේ Betting Tips</string>
+    <string name="guide_section4_step1">ප්‍රධාන පිටුවේ \'Free Tips Telegram\' ඔබන්න.</string>
+    <string name="guide_section4_step2">අපගේ නිල Telegram චැනලයට එකතු වන්න.</string>
+    <string name="guide_section4_step3">දිනපතා නොමිලේ Betting Tips ලබාගන්න!</string>
+
+    <!-- Privacy Policy -->
+    <string name="privacy_title">රහස්‍යතා ප්‍රතිපත්තිය</string>
+    <string name="privacy_body">🔒 රහස්‍යතා ප්‍රතිපත්තිය — Fast Xbet Official Sri Lanka\n\n1. අප රැස් කරන තොරතුරු:\n• ඔබේ 1xBet User ID එක\n• ගනුදෙනු තහවුරු කිරීම සඳහා වන තැන්පතු රිසිට්පත්\n• මුදල් ලබාගැනීම් සඳහා වන ආරක්ෂිත Secret Code\n• මුදල් තැන්පත් කිරීම සඳහා ඔබේ බැංකු ගිණුම් විස්තර\n\n2. අප තොරතුරු භාවිතා කරන ආකාරය:\n• ඔබේ 1xBet ගිණුමට මුදල් තැන්පත් කිරීමට\n• අනුමත මුදල් ලබාගැනීම් ඔබේ බැංකු ගිණුමට යොමු කිරීමට\n\n3. දත්ත ආරක්ෂාව:\n• අප කිසිවිටෙකත් ඔබේ පෞද්ගලික තොරතුරු වෙනත් පාර්ශවයන් වෙත ලබා නොදෙන්නෙමු\n• සියලුම ගනුදෙනු විස්තර අතිශය රහස්‍ය ලෙස තබා ගැනේ\n\n4. වගකීම් ලිහිල් කිරීම:\n• අපගේ සේවාව තැන්පතු සහ මුදල් ලබාගැනීම් පහසු කිරීමට පමණක් සීමා වේ\n• 1xBet තාක්ෂණික දෝෂ හෝ ක්‍රීඩා පාඩු සම්බන්ධයෙන් අප වගකියනු නොලැබේ\n• ඔබේ 1xBet ගිණුමේ ආරක්ෂාව තබා ගැනීම ඔබේ වගකීමකි\n\n5. අප හා සම්බන්ධ වන්න:\n📞 +94765865387\n© 2026 Fast Xbet Official Sri Lanka. සියලුම හිමිකම් ඇවිරිණි.</string>
+
+    <!-- FAQ Accordion -->
+    <string name="faq_title">නිතර අසන ප්‍රශ්න (FAQ)</string>
+    <string name="faq_subtitle">තැන්පතු සහ ලබාගැනීම් පිළිබඳ නිතර අසන ප්‍රශ්නවලට ඉක්මන් පිළිතුරු</string>
+    <string name="faq_q1">තැන්පතුවක් සඳහා කොපමණ වේලාවක් ගතවේද?</string>
+    <string name="faq_a1">රිසිට්පත යොමු කිරීමෙන් පසු මිනිත්තු 5-15ක් ඇතුළත තැන්පතු පරීක්ෂා කර සෘජුවම ඔබේ 1xBet ගිණුමට බැර කෙරේ.</string>
+    <string name="faq_q2">මුදල් ලබාගැනීමට (Withdrawal) කොපමණ වේලාවක් ගතවේද?</string>
+    <string name="faq_a2">ඔබගේ Secret Code එක පරීක්ෂා කිරීමෙන් පසු මිනිත්තු 5-15ක් ඇතුළත මුදල් ඔබේ බැංකු ගිණුමට තැන්පත් කරනු ලැබේ.</string>
+    <string name="faq_q3">මුදල් ලබාගැනීමේ සීමාවන් මොනවාද?</string>
+    <string name="faq_a3">අවම ලබාගැනීමේ සීමාව LKR 1,000 වන අතර උපරිම සීමාව එක් ඉල්ලීමකට LKR 500,000 වේ.</string>
+    <string name="faq_q4">බැංකු හුවමාරු Remark / Reference එකට දැමිය යුත්තේ කුමක්ද?</string>
+    <string name="faq_a4">ඔබගේ තැන්පතුව ඉක්මනින් හඳුනාගෙන බැර කිරීමට හැකි වන පරිදි සෑම විටම Remark එක ලෙස ඔබේ 1xBet Player ID එක ඇතුළත් කරන්න.</string>
+    <string name="faq_q5">Withdrawal සඳහා වන 4-digit Secret Code එක ලබාගන්නේ කෙසේද?</string>
+    <string name="faq_a5">1xBet app එකෙහි 1xBet Cash තෝරා (Address: Walasmulla, Beliaththa Road 24/7) ඉල්ලීමක් කරන්න. 1xBet මගින් අනුමත වූ පසු ඉලක්කම් 4ක Secret Code එකක් ඔබේ 1xBet ගිණුමේ පෙන්වයි.</string>
+    <string name="faq_q6">මගේ බැංකු විස්තර සහ තොරතුරු සුරක්ෂිතද?</string>
+    <string name="faq_a6">ඔව්! සියලුම ගනුදෙනු විස්තර අතිශය සුරක්ෂිත අතර මුදල් මාරු කිරීම සඳහා පමණක් භාවිත වේ. අප කිසිවිටෙකත් ඔබේ 1xBet Password හෝ PIN ඉල්ලන්නේ නැත.</string>
+    <!-- Support Dialog -->
+    <string name="contact_support_btn">පාරිභෝගික සහාය ලබාගන්න</string>
+    <string name="support_dialog_title">24/7 නිල Fast Xbet සහාය සේවාව</string>
+    <string name="support_dialog_subtitle">ඔබගේ තැන්පතුව හෝ ගිණුම පිළිබඳ හදිසි සහායක් අවශ්‍යද? අපගේ නිල කණ්ඩායම හා සම්බන්ධ වන්න:</string>
+    <string name="support_whatsapp">WhatsApp සජීවී සහාය</string>
+    <string name="support_telegram">Telegram නිල සහාය</string>
+    <string name="support_close">වසා දමන්න</string>
+
+    <!-- Top Promo Banner -->
+    <string name="top_promo_badge">🔥 150% සාදරයෙන් පිළිගැනීමේ බෝනස්</string>
+    <string name="top_promo_title">1xBet හි 150% බෝනස් ලබාගන්න</string>
+    <string name="top_promo_desc">1xBet හි ලියාපදිංචි වන විට VGSL නිල promo code එක යොදා 150% බෝනස් ලබාගන්න!</string>
+    <string name="top_promo_cta">150% බෝනස් ලබාගන්න</string>
+</resources>
