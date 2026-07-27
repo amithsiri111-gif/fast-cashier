@@ -70,6 +70,7 @@ import com.example.data.local.entity.BankEntity
 import com.example.ui.components.DetailRow
 import com.example.ui.theme.PrimaryGreen
 import com.example.ui.theme.SecondaryGold
+import com.example.ui.util.ContactHelper
 import com.example.ui.viewmodel.CashierViewModel
 
 @Composable
@@ -305,13 +306,7 @@ fun SupportContactDialog(
                 // Telegram Support Option
                 Button(
                     onClick = {
-                        val telegramUri = Uri.parse("https://t.me/fast_xbet_cashier")
-                        val intent = Intent(Intent.ACTION_VIEW, telegramUri)
-                        try {
-                            context.startActivity(intent)
-                        } catch (e: Exception) {
-                            Toast.makeText(context, "Could not open Telegram", Toast.LENGTH_SHORT).show()
-                        }
+                        ContactHelper.openTelegram(context)
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -503,6 +498,7 @@ fun BankDetailsAndInstructionsStep(bank: BankEntity?, onUploadClick: () -> Unit)
                 Text(
                     text = stringResource(R.string.deposit_step2),
                     fontSize = 12.sp,
+                                        fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     color = PrimaryGreen
                 )
