@@ -64,6 +64,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ui.theme.PrimaryGreen
 import com.example.ui.theme.SecondaryGold
+import com.example.ui.util.ContactHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,40 +77,23 @@ fun CustomerSupportScreen(
     var playerId by remember { mutableStateOf("") }
     var issueType by remember { mutableStateOf("Deposit Delay") }
 
-    fun openUrl(url: String) {
-        try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            context.startActivity(intent)
-        } catch (e: Exception) {
-            Toast.makeText(context, "Cannot open link", Toast.LENGTH_SHORT).show()
-        }
-    }
-
     fun launchWhatsAppSupport() {
         val message = "Hello FastXbet Support! I need help with my transaction.\n" +
                 "Player ID: ${if (playerId.isNotBlank()) playerId else "Not specified"}\n" +
                 "Issue: $issueType"
-        val encodedMessage = Uri.encode(message)
-        val whatsappUrl = "https://wa.me/94771234567?text=$encodedMessage"
-        openUrl(whatsappUrl)
+        ContactHelper.openWhatsApp(context = context, message = message)
     }
 
     fun launchTelegramSupport() {
-        val telegramUrl = "https://t.me/fastxbet_support"
-        openUrl(telegramUrl)
+        ContactHelper.openTelegram(context = context)
     }
 
     fun launchEmailSupport() {
-        try {
-            val intent = Intent(Intent.ACTION_SENDTO).apply {
-                data = Uri.parse("mailto:support@fastxbet.com")
-                putExtra(Intent.EXTRA_SUBJECT, "FastXbet Support Inquiry - Player ID $playerId")
-                putExtra(Intent.EXTRA_TEXT, "Hello Support Team,\n\nPlayer ID: $playerId\nIssue: $issueType\n\nPlease assist me.")
-            }
-            context.startActivity(intent)
-        } catch (e: Exception) {
-            Toast.makeText(context, "Email app not found", Toast.LENGTH_SHORT).show()
-        }
+        ContactHelper.openEmail(
+            context = context,
+            subject = "FastXbet Support Inquiry - Player ID $playerId",
+            body = "Hello Support Team,\n\nPlayer ID: $playerId\nIssue: $issueType\n\nPlease assist me."
+        )
     }
 
     Column(
@@ -213,7 +197,7 @@ fun CustomerSupportScreen(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "අපගේ පාරිභෝගික සහාය සේවාව සතියේ දින 7ම පැය 24 පුරාම ක්‍රියාත්මක වේ. තැන්පතු, මුදල් ආපසු ගැනීම් හෝ වෙනත් ගැටලු සඳහා අප හා සම්බන්ධ වන්න.\n(Our dedicated support team is available 24/7 to assist with your deposits, withdrawals, and account inquiries.)",
+                    text = "à¶…à¶´à¶œà·š à¶´à·à¶»à·’à¶·à·à¶œà·’à¶š à·ƒà·„à·à¶º à·ƒà·šà·€à·à·€ à·ƒà¶­à·’à¶ºà·š à¶¯à·’à¶± 7à¶¸ à¶´à·à¶º 24 à¶´à·”à¶»à·à¶¸ à¶šà·Šâ€à¶»à·’à¶ºà·à¶­à·Šà¶¸à¶š à·€à·š. à¶­à·à¶±à·Šà¶´à¶­à·”, à¶¸à·”à¶¯à¶½à·Š à¶†à¶´à·ƒà·” à¶œà·à¶±à·“à¶¸à·Š à·„à· à·€à·™à¶±à¶­à·Š à¶œà·à¶§à¶½à·” à·ƒà¶³à·„à· à¶…à¶´ à·„à· à·ƒà¶¸à·Šà¶¶à¶±à·Šà¶° à·€à¶±à·Šà¶±.\n(Our dedicated support team is available 24/7 to assist with your deposits, withdrawals, and account inquiries.)",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     lineHeight = 17.sp
@@ -223,7 +207,7 @@ fun CustomerSupportScreen(
 
         // Instant Support Channels Section
         Text(
-            text = "සහාය නාලිකා (Support Channels)",
+            text = "à·ƒà·„à·à¶º à¶±à·à¶½à·’à¶šà· (Support Channels)",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold
         )
@@ -231,11 +215,11 @@ fun CustomerSupportScreen(
         // WhatsApp Channel Card
         SupportChannelCard(
             title = "WhatsApp Direct Support",
-            subtitle = "ක්ෂණික සහාය සඳහා WhatsApp භාවිතා කරන්න",
+            subtitle = "+94 77 676 3093 (à¶šà·Šà·‚à¶«à·’à¶š à·ƒà·„à·à¶º à·ƒà¶³à·„à· WhatsApp à¶·à·à·€à·’à¶­à· à¶šà¶»à¶±à·Šà¶±)",
             tag = "24/7 Fast Response",
             icon = Icons.Default.PhoneInTalk,
             brandColor = Color(0xFF25D366),
-            buttonText = "Open WhatsApp Support",
+            buttonText = "Open WhatsApp (+94776763093)",
             testTag = "support_whatsapp_btn",
             onClick = { launchWhatsAppSupport() }
         )
@@ -243,11 +227,11 @@ fun CustomerSupportScreen(
         // Telegram Channel Card
         SupportChannelCard(
             title = "Telegram Official Support",
-            subtitle = "තැන්පතු/ආපසු ගැනීම් සහායක Telegram චැනලය",
+            subtitle = "@fast_xbet (à¶­à·à¶±à·Šà¶´à¶­à·”/à¶†à¶´à·ƒà·” à¶œà·à¶±à·“à¶¸à·Š à·ƒà·„à·à¶ºà¶š Telegram à¶ à·à¶±à¶½à¶º)",
             tag = "Official Channel",
             icon = Icons.AutoMirrored.Filled.Send,
             brandColor = Color(0xFF229ED9),
-            buttonText = "Open Telegram Support",
+            buttonText = "Open Telegram (@fast_xbet)",
             testTag = "support_telegram_btn",
             onClick = { launchTelegramSupport() }
         )
@@ -283,14 +267,14 @@ fun CustomerSupportScreen(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "ගනුදෙනු සහාය ලබාගැනීම (Quick Support Helper)",
+                        text = "à¶œà¶±à·”à¶¯à·™à¶±à·” à·ƒà·„à·à¶º à¶½à¶¶à·à¶œà·à¶±à·“à¶¸ (Quick Support Helper)",
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp
                     )
                 }
 
                 Text(
-                    text = "ඔබගේ 1xBet Player ID එක ඇතුළත් කර සහායක කණ්ඩායම වෙත ක්ෂණික පණිවිඩයක් යවන්න:",
+                    text = "à¶”à¶¶à¶œà·š 1xBet Player ID à¶‘à¶š à¶‡à¶­à·”à·…à¶­à·Š à¶šà¶» à·ƒà·„à·à¶ºà¶š à¶šà¶«à·Šà¶©à·à¶ºà¶¸ à·€à·™à¶­ à¶šà·Šà·‚à¶«à·’à¶š à¶´à¶«à·’à·€à·’à¶©à¶ºà¶šà·Š à¶ºà·€à¶±à·Šà¶±:",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -364,24 +348,24 @@ fun CustomerSupportScreen(
 
         // FAQs Section
         Text(
-            text = "නිතර අසන ප්‍රශ්න (Common Support Questions)",
+            text = "à¶±à·’à¶­à¶» à¶…à·ƒà¶± à¶´à·Šâ€à¶»à·à·Šà¶± (Common Support Questions)",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold
         )
 
         FaqItemCard(
-            question = "තැන්පතුව ගිණුමට එකතු වීමට කොපමණ වේලාවක් ගතවේද? (How long does deposit take?)",
-            answer = "සාමාන්‍යයෙන් විනාඩි 5 සිට 15 දක්වා කාලයක් ඇතුළත තැන්පතු සාර්ථකව සිදු වේ. රිසිට්පත පැහැදිලිව upload කර ඇති බව තහවුරු කරගන්න."
+            question = "à¶­à·à¶±à·Šà¶´à¶­à·”à·€ à¶œà·’à¶«à·”à¶¸à¶§ à¶‘à¶šà¶­à·” à·€à·“à¶¸à¶§ à¶šà·œà¶´à¶¸à¶« à·€à·šà¶½à·à·€à¶šà·Š à¶œà¶­à·€à·šà¶¯? (How long does deposit take?)",
+            answer = "à·ƒà·à¶¸à·à¶±à·Šâ€à¶ºà¶ºà·™à¶±à·Š à·€à·’à¶±à·à¶©à·’ 5 à·ƒà·’à¶§ 15 à¶¯à¶šà·Šà·€à· à¶šà·à¶½à¶ºà¶šà·Š à¶‡à¶­à·”à·…à¶­ à¶­à·à¶±à·Šà¶´à¶­à·” à·ƒà·à¶»à·Šà¶®à¶šà·€ à·ƒà·’à¶¯à·” à·€à·š. à¶»à·’à·ƒà·’à¶§à·Šà¶´à¶­ à¶´à·à·„à·à¶¯à·’à¶½à·’à·€ upload à¶šà¶» à¶‡à¶­à·’ à¶¶à·€ à¶­à·„à·€à·”à¶»à·” à¶šà¶»à¶œà¶±à·Šà¶±."
         )
 
         FaqItemCard(
-            question = "මුදල් ආපසු ගැනීම ප්‍රමාද වුවහොත් කුමක් කළ යුතුද? (What if withdrawal is delayed?)",
-            answer = "1xBet Cashier පද්ධතිය මගින් ලබා දුන් Withdrawal Code එක සහ ඔබගේ Player ID එක අපගේ WhatsApp සහායක කණ්ඩායම වෙත යවන්න."
+            question = "à¶¸à·”à¶¯à¶½à·Š à¶†à¶´à·ƒà·” à¶œà·à¶±à·“à¶¸ à¶´à·Šâ€à¶»à¶¸à·à¶¯ à·€à·”à·€à·„à·œà¶­à·Š à¶šà·”à¶¸à¶šà·Š à¶šà·… à¶ºà·”à¶­à·”à¶¯? (What if withdrawal is delayed?)",
+            answer = "1xBet Cashier à¶´à¶¯à·Šà¶°à¶­à·’à¶º à¶¸à¶œà·’à¶±à·Š à¶½à¶¶à· à¶¯à·”à¶±à·Š Withdrawal Code à¶‘à¶š à·ƒà·„ à¶”à¶¶à¶œà·š Player ID à¶‘à¶š à¶…à¶´à¶œà·š WhatsApp à·ƒà·„à·à¶ºà¶š à¶šà¶«à·Šà¶©à·à¶ºà¶¸ à·€à·™à¶­ à¶ºà·€à¶±à·Šà¶±."
         )
 
         FaqItemCard(
-            question = "FastXbet Cashier නිල සේවාවක්ද? (Is FastXbet official?)",
-            answer = "ඔව්, FastXbet යනු ශ්‍රී ලංකාව සඳහා වන නිල 1xBet Cashier සහකරු වේ. ඔබගේ ගනුදෙනු 100% ආරක්ෂිත වේ."
+            question = "FastXbet Cashier à¶±à·’à¶½ à·ƒà·šà·€à·à·€à¶šà·Šà¶¯? (Is FastXbet official?)",
+            answer = "à¶”à·€à·Š, FastXbet à¶ºà¶±à·” à·à·Šâ€à¶»à·“ à¶½à¶‚à¶šà·à·€ à·ƒà¶³à·„à· à·€à¶± à¶±à·’à¶½ 1xBet Cashier à·ƒà·„à¶šà¶»à·” à·€à·š. à¶”à¶¶à¶œà·š à¶œà¶±à·”à¶¯à·™à¶±à·” 100% à¶†à¶»à¶šà·Šà·‚à·’à¶­ à·€à·š."
         )
 
         Spacer(modifier = Modifier.height(16.dp))
