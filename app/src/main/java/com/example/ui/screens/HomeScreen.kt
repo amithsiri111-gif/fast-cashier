@@ -62,6 +62,7 @@ import com.example.R
 import com.example.ui.components.FaqAccordionSection
 import com.example.ui.theme.PrimaryGreen
 import com.example.ui.theme.SecondaryGold
+import com.example.ui.util.ContactHelper
 
 @Composable
 fun HomeScreen(
@@ -141,8 +142,7 @@ fun HomeScreen(
                 icon = Icons.AutoMirrored.Filled.Send,
                 modifier = Modifier.weight(1f),
                 onClick = {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/fastxbet_tips"))
-                    context.startActivity(intent)
+                    ContactHelper.openTelegram(context)
                 }
             )
         }
