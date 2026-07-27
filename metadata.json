@@ -1,6 +1,6 @@
 {
-  "name": "Fast Xbet Official Cashier",
-  "description": "Official Cashier Application for 1xBet Sri Lanka Deposits, Withdrawals, Daily Free Tips, and Customer Support",
+  "name": "My Application",
+  "description": "Android Application",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
