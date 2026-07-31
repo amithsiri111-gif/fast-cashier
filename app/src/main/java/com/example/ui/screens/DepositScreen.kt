@@ -498,7 +498,6 @@ fun BankDetailsAndInstructionsStep(bank: BankEntity?, onUploadClick: () -> Unit)
                 Text(
                     text = stringResource(R.string.deposit_step2),
                     fontSize = 12.sp,
-                                        fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     color = PrimaryGreen
                 )
