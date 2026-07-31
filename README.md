@@ -71,6 +71,8 @@ app/src/main/java/com/example/
 
 ---
 
+[![Build Android APK](https://github.com/Lakmal2078/fast-xbet-official-cashier/actions/workflows/build.yml/badge.svg)](https://github.com/Lakmal2078/fast-xbet-official-cashier/actions/workflows/build.yml)
+
 ## 🚀 ධාවනය කරවන ආකාරය (How to Run)
 
 1. **Android Studio** (Ladybug / Jellyfish හෝ ඊට ඉහළ) භාවිතයෙන් මෙම ව්‍යාපෘතිය open කරන්න.
