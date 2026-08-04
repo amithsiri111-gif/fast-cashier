@@ -24,6 +24,16 @@ interface WithdrawalDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWithdrawal(withdrawal: WithdrawalEntity): Long
 
+    @Query("DELETE FROM withdrawals WHERE id = :id")
+    suspend fun deleteById(id: Long)
+
+    @Transaction
+    suspend fun insertWithdrawalIfNoPending(withdrawal: WithdrawalEntity): Long {
+        val existing = getPendingWithdrawal()
+        if (existing != null) return -1L
+        return insertWithdrawal(withdrawal)
+    }
+
     @Query("UPDATE withdrawals SET status = :status, payoutReference = :payoutRef, rejectionReason = :reason WHERE id = :id")
     suspend fun updateStatus(id: Long, status: String, payoutRef: String? = null, reason: String? = null)
 

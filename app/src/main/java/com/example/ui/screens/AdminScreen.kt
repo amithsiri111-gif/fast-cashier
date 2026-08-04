@@ -72,7 +72,7 @@ fun AdminScreen(viewModel: CashierViewModel) {
     if (!isLoggedIn) {
         AdminPinLoginView(
             pinInput = pinInput,
-            onPinChange = { viewModel.adminPinInput.value = it },
+            onPinChange = { viewModel.setAdminPinInput(it) },
             onLogin = { viewModel.loginAdmin() }
         ) {
             viewModel.logoutAdmin()

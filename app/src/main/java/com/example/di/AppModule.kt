@@ -29,9 +29,12 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import com.example.data.remote.DefaultTokenProvider
+import com.example.data.remote.TokenProvider
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -62,9 +65,18 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideTokenProvider(): TokenProvider = DefaultTokenProvider
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(tokenProvider: TokenProvider): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(AuthInterceptor())
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .callTimeout(60, TimeUnit.SECONDS)
+            .retryOnConnectionFailure(true)
+            .addInterceptor(AuthInterceptor(tokenProvider))
             .build()
     }
 

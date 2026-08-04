@@ -88,6 +88,14 @@ app/src/main/java/com/example/
 2. Gradle dependencies ස්වයංක්‍රීයව sync වන තෙක් රැඳී සිටින්න.
 3. Android Emulator එකක් හෝ භෞතික දුරකථනයක් (Physical Device) යොදාගෙන **Run (Shift + F10)** ඔබන්න.
 
+## 🔐 SECURITY NOTES
+
+- Backend authentication is required for production. The app currently supports a client-side `TokenProvider` abstraction that returns no token by default.
+- Do not commit secrets, API keys, or admin PIN values into source control.
+- `ADMIN_PIN_HASH` is injected via build config and is only a weak local safeguard. Production admin access should be verified by the backend.
+- Database encryption uses SQLCipher with a runtime-generated passphrase stored via AndroidX Security. Do not replace this with a hard-coded passphrase.
+- Release build minification is enabled in `app/build.gradle.kts`; keep ProGuard/R8 rules updated when adding reflection-heavy libraries.
+
 ---
 
 © 2026 **Fast Xbet Official Sri Lanka**. සියලුම හිමිකම් ඇවිරිණි.

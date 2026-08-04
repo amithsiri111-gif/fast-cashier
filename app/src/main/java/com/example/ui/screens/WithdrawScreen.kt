@@ -127,7 +127,7 @@ fun WithdrawScreen(viewModel: CashierViewModel) {
                 // Player ID
                 OutlinedTextField(
                     value = playerId,
-                    onValueChange = { viewModel.withdrawPlayerId.value = it },
+                    onValueChange = { viewModel.setWithdrawPlayerId(it) },
                     label = { Text(text = stringResource(R.string.label_player_id)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -140,7 +140,7 @@ fun WithdrawScreen(viewModel: CashierViewModel) {
                 // Amount
                 OutlinedTextField(
                     value = amount,
-                    onValueChange = { viewModel.withdrawAmount.value = it },
+                    onValueChange = { viewModel.setWithdrawAmount(it) },
                     label = { Text(text = stringResource(R.string.label_amount)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -153,7 +153,7 @@ fun WithdrawScreen(viewModel: CashierViewModel) {
                 // Secret Code
                 OutlinedTextField(
                     value = secretCode,
-                    onValueChange = { viewModel.withdrawSecretCode.value = it },
+                    onValueChange = { viewModel.setWithdrawSecretCode(it) },
                     label = { Text(text = stringResource(R.string.label_secret_code)) },
                     singleLine = true,
                     visualTransformation = PasswordVisualTransformation(),
@@ -175,7 +175,7 @@ fun WithdrawScreen(viewModel: CashierViewModel) {
                 // Bank Name
                 OutlinedTextField(
                     value = bankName,
-                    onValueChange = { viewModel.withdrawBankName.value = it },
+                    onValueChange = { viewModel.setWithdrawBankName(it) },
                     label = { Text(text = stringResource(R.string.label_bank_name)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
@@ -185,7 +185,7 @@ fun WithdrawScreen(viewModel: CashierViewModel) {
                 // Account Holder Name
                 OutlinedTextField(
                     value = accountHolder,
-                    onValueChange = { viewModel.withdrawAccountHolder.value = it },
+                    onValueChange = { viewModel.setWithdrawAccountHolder(it) },
                     label = { Text(text = stringResource(R.string.label_acc_holder)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
@@ -195,7 +195,7 @@ fun WithdrawScreen(viewModel: CashierViewModel) {
                 // Account Number
                 OutlinedTextField(
                     value = accountNumber,
-                    onValueChange = { viewModel.withdrawAccountNumber.value = it },
+                    onValueChange = { viewModel.setWithdrawAccountNumber(it) },
                     label = { Text(text = stringResource(R.string.label_acc_number)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -206,7 +206,7 @@ fun WithdrawScreen(viewModel: CashierViewModel) {
                 // Branch
                 OutlinedTextField(
                     value = branch,
-                    onValueChange = { viewModel.withdrawBranch.value = it },
+                    onValueChange = { viewModel.setWithdrawBranch(it) },
                     label = { Text(text = stringResource(R.string.label_branch)) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
