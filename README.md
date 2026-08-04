@@ -1,8 +1,6 @@
-# Fast Xbet Official Sri Lanka — 1xBet Fast Deposit & Withdrawal App
+# Fast Official Sri Lanka — Fast Deposit & Withdrawal App
 
-**Fast Xbet Official Sri Lanka** යනු ශ්‍රී ලංකාවේ 1xBet පරිශීලකයින් සඳහා වේගවත්, සුරක්ෂිත සහ විශ්වසනීය තැන්පතු (Deposits) සහ මුදල් ලබාගැනීම් (Withdrawals) පහසු කරන නිල Android යෙදුමයි (Cashier Helper App).
-
-> 🔥 මෙම README පූර්ණයෙන්ම දුඹුරු/අළුත් සුන්දර `Dark Mode` අත්දැකීමේ සාකච්ඡාවට සුදුසු ලෙස සකස් වී ඇත.
+**Fast Official Sri Lanka** යනු ශ්‍රී ලංකාවේ Betting පරිශීලකයින් සඳහා වේගවත්, සුරක්ෂිත සහ විශ්වසනීය තැන්පතු (Deposits) සහ මුදල් ලබාගැනීම් (Withdrawals) පහසු කරන නිල Android යෙදුමයි (Cashier Helper App).
 
 ---
 
