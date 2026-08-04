@@ -1,9 +1,12 @@
 package com.example.data.local
 
 import android.content.Context
+import android.util.Base64
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.data.local.dao.BankDao
 import com.example.data.local.dao.DepositDao
@@ -16,10 +19,12 @@ import com.example.data.local.entity.WithdrawalEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import net.sqlcipher.database.SupportFactory
+import java.security.SecureRandom
 
 @Database(
     entities = [UserEntity::class, DepositEntity::class, WithdrawalEntity::class, BankEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -33,18 +38,64 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
+        private const val DATABASE_NAME = "fastxbet_cashier.db"
+        private const val SECURE_PREFS_NAME = "secure_db_prefs"
+        private const val KEY_DB_PASSPHRASE = "db_passphrase"
+
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
+                val passphrase = getOrCreateDatabasePassphrase(context)
+                val factory = SupportFactory(passphrase)
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "fastxbet_cashier.db"
+                    DATABASE_NAME
                 )
-                .addCallback(DatabaseCallback())
-                .fallbackToDestructiveMigration()
-                .build()
+                    .openHelperFactory(factory)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                    .addCallback(DatabaseCallback())
+                    .build()
                 INSTANCE = instance
                 instance
+            }
+        }
+
+        private fun getOrCreateDatabasePassphrase(context: Context): ByteArray {
+            val masterKey = MasterKey.Builder(context)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build()
+
+            val securePrefs = EncryptedSharedPreferences.create(
+                context,
+                SECURE_PREFS_NAME,
+                masterKey,
+                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            )
+
+            val existingPassphrase = securePrefs.getString(KEY_DB_PASSPHRASE, null)
+            return if (existingPassphrase != null) {
+                Base64.decode(existingPassphrase, Base64.DEFAULT)
+            } else {
+                val randomBytes = ByteArray(32)
+                SecureRandom().nextBytes(randomBytes)
+                securePrefs.edit().putString(KEY_DB_PASSPHRASE, Base64.encodeToString(randomBytes, Base64.NO_WRAP)).apply()
+                randomBytes
+            }
+        }
+
+        internal val MIGRATION_1_2 = object : androidx.room.migration.Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // No schema changes in 1 -> 2 for this release path.
+            }
+        }
+
+        internal val MIGRATION_2_3 = object : androidx.room.migration.Migration(2, 3) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE deposits ADD COLUMN amountMinorUnits INTEGER NOT NULL DEFAULT 0")
+                database.execSQL("UPDATE deposits SET amountMinorUnits = CAST(ROUND(amount * 100) AS INTEGER) WHERE amount IS NOT NULL")
+                database.execSQL("ALTER TABLE withdrawals ADD COLUMN amountMinorUnits INTEGER NOT NULL DEFAULT 0")
+                database.execSQL("UPDATE withdrawals SET amountMinorUnits = CAST(ROUND(amount * 100) AS INTEGER) WHERE amount IS NOT NULL")
             }
         }
 

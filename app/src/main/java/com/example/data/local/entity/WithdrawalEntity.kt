@@ -10,7 +10,7 @@ data class WithdrawalEntity(
     val userJid: String = "user_default",
     val playerId: String = "",
     val amountText: String = "",
-    val amount: Double = 0.0,
+    val amountMinorUnits: Long = 0,
     val secretCode: String = "",
     val bankName: String = "",
     val accountHolder: String = "",

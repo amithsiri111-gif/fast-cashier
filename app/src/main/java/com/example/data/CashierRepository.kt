@@ -1,63 +1,64 @@
 package com.example.data
 
-import com.example.data.local.AppDatabase
 import com.example.data.local.entity.BankEntity
 import com.example.data.local.entity.DepositEntity
 import com.example.data.local.entity.UserEntity
 import com.example.data.local.entity.WithdrawalEntity
+import com.example.data.remote.SubmitDepositRequest
+import com.example.data.remote.SubmitWithdrawalRequest
+import com.example.data.repository.LocalDataSource
+import com.example.data.repository.RemoteRepository
 import kotlinx.coroutines.flow.Flow
 
-class CashierRepository(private val db: AppDatabase) {
+class CashierRepository(
+    private val localDataSource: LocalDataSource,
+    private val remoteRepository: RemoteRepository
+) {
 
-    val userFlow: Flow<UserEntity?> = db.userDao().getUserFlow()
-    val activeBanksFlow: Flow<List<BankEntity>> = db.bankDao().getActiveBanksFlow()
-    val allDepositsFlow: Flow<List<DepositEntity>> = db.depositDao().getAllDepositsFlow()
-    val pendingDepositsFlow: Flow<List<DepositEntity>> = db.depositDao().getPendingDepositsFlow()
-    val allWithdrawalsFlow: Flow<List<WithdrawalEntity>> = db.withdrawalDao().getAllWithdrawalsFlow()
-    val pendingWithdrawalsFlow: Flow<List<WithdrawalEntity>> = db.withdrawalDao().getPendingWithdrawalsFlow()
+    val userFlow: Flow<UserEntity?> = localDataSource.userFlow
+    val activeBanksFlow: Flow<List<BankEntity>> = localDataSource.activeBanksFlow
+    val allDepositsFlow: Flow<List<DepositEntity>> = localDataSource.allDepositsFlow
+    val pendingDepositsFlow: Flow<List<DepositEntity>> = localDataSource.pendingDepositsFlow
+    val allWithdrawalsFlow: Flow<List<WithdrawalEntity>> = localDataSource.allWithdrawalsFlow
+    val pendingWithdrawalsFlow: Flow<List<WithdrawalEntity>> = localDataSource.pendingWithdrawalsFlow
 
-    val pendingDepositsCount: Flow<Int> = db.depositDao().getPendingCountFlow()
-    val pendingWithdrawalsCount: Flow<Int> = db.withdrawalDao().getPendingCountFlow()
-    val totalUsersCount: Flow<Int> = db.userDao().getTotalUsersFlow()
+    val pendingDepositsCount: Flow<Int> = localDataSource.pendingDepositsCount
+    val pendingWithdrawalsCount: Flow<Int> = localDataSource.pendingWithdrawalsCount
+    val totalUsersCount: Flow<Int> = localDataSource.totalUsersCount
 
     suspend fun getUser(): UserEntity {
-        return db.userDao().getUser() ?: UserEntity().also { db.userDao().insertOrUpdate(it) }
+        return localDataSource.getUser() ?: UserEntity().also { localDataSource.insertOrUpdateUser(it) }
     }
 
-    suspend fun updateLanguage(lang: String) {
-        db.userDao().updateLanguage(lang)
-    }
+    suspend fun updateLanguage(lang: String) = localDataSource.updateLanguage(lang)
 
     suspend fun updatePlayerId(playerId: String) {
         val user = getUser()
-        db.userDao().insertOrUpdate(user.copy(playerId = playerId))
+        localDataSource.insertOrUpdateUser(user.copy(playerId = playerId))
     }
 
     suspend fun saveBankDetails(bankName: String, holder: String, accNo: String, branch: String) {
-        db.userDao().updateSavedBank(bankName, holder, accNo, branch)
+        localDataSource.updateSavedBank(bankName, holder, accNo, branch)
     }
 
     suspend fun clearSavedBank() {
-        db.userDao().updateSavedBank("", "", "", "")
+        localDataSource.updateSavedBank("", "", "", "")
     }
 
-    // Validation & Submission for Deposit
     suspend fun submitDeposit(
         playerId: String,
         bankName: String,
         amountText: String,
-        amount: Double,
+        amountMinorUnits: Long,
         slipUri: String?,
         reference: String
     ): Result<Long> {
-        // Validate Player ID (5-12 digits)
         if (!playerId.matches(Regex("^[0-9]{5,12}$"))) {
             return Result.failure(IllegalArgumentException("INVALID_PLAYER_ID"))
         }
 
-        // Duplicate reference check
         if (reference.isNotEmpty()) {
-            val existing = db.depositDao().getDepositByReference(reference)
+            val existing = localDataSource.getDepositByReference(reference)
             if (existing != null) {
                 return Result.failure(IllegalStateException("DUPLICATE_SLIP:${existing.id}"))
             }
@@ -65,53 +66,87 @@ class CashierRepository(private val db: AppDatabase) {
 
         val generatedRef = if (reference.isEmpty()) "DEP-${System.currentTimeMillis().toString().takeLast(6)}" else reference
 
+        val request = SubmitDepositRequest(
+            playerId = playerId,
+            bankName = bankName,
+            amountMinorUnits = amountMinorUnits,
+            slipUri = slipUri,
+            reference = generatedRef
+        )
+
+        val response = try {
+            remoteRepository.submitDeposit(request)
+        } catch (error: Throwable) {
+            return Result.failure(IllegalStateException("REMOTE_DEPOSIT_FAILED", error))
+        }
+
+        if (!response.success) {
+            return Result.failure(IllegalStateException("REMOTE_DEPOSIT_FAILED"))
+        }
+
         val deposit = DepositEntity(
             userJid = "user_${playerId}",
             playerId = playerId,
             bankName = bankName,
             amountText = amountText,
-            amount = amount,
+            amountMinorUnits = amountMinorUnits,
             slipUri = slipUri,
             status = "PENDING",
             reference = generatedRef
         )
 
-        val id = db.depositDao().insertDeposit(deposit)
+        val id = localDataSource.insertDeposit(deposit)
         updatePlayerId(playerId)
         return Result.success(id)
     }
 
-    // Validation & Submission for Withdrawal
     suspend fun submitWithdrawal(
         playerId: String,
-        amount: Double,
+        amountMinorUnits: Long,
         secretCode: String,
         bankName: String,
         accountHolder: String,
         accountNumber: String,
         branch: String
     ): Result<Long> {
-        // Player ID validation
         if (!playerId.matches(Regex("^[0-9]{5,12}$"))) {
             return Result.failure(IllegalArgumentException("INVALID_PLAYER_ID"))
         }
 
-        // Amount limits: 1000 - 500,000 LKR
-        if (amount < 1000.0 || amount > 500000.0) {
+        if (amountMinorUnits < 100_000 || amountMinorUnits > 50_000_000) {
             return Result.failure(IllegalArgumentException("INVALID_AMOUNT"))
         }
 
-        // Check if pending withdrawal exists
-        val pendingExists = db.withdrawalDao().getPendingWithdrawal()
+        val pendingExists = localDataSource.getPendingWithdrawal()
         if (pendingExists != null) {
             return Result.failure(IllegalStateException("PENDING_WITHDRAWAL_EXISTS:${pendingExists.id}:${pendingExists.amountText}"))
+        }
+
+        val request = SubmitWithdrawalRequest(
+            playerId = playerId,
+            amountMinorUnits = amountMinorUnits,
+            secretCode = secretCode,
+            bankName = bankName,
+            accountHolder = accountHolder,
+            accountNumber = accountNumber,
+            branch = branch
+        )
+
+        val response = try {
+            remoteRepository.submitWithdrawal(request)
+        } catch (error: Throwable) {
+            return Result.failure(IllegalStateException("REMOTE_WITHDRAWAL_FAILED", error))
+        }
+
+        if (!response.success) {
+            return Result.failure(IllegalStateException("REMOTE_WITHDRAWAL_FAILED"))
         }
 
         val withdrawal = WithdrawalEntity(
             userJid = "user_${playerId}",
             playerId = playerId,
-            amountText = "LKR ${amount.toInt()}",
-            amount = amount,
+            amountText = "LKR ${amountMinorUnits / 100}",
+            amountMinorUnits = amountMinorUnits,
             secretCode = secretCode,
             bankName = bankName,
             accountHolder = accountHolder,
@@ -120,39 +155,35 @@ class CashierRepository(private val db: AppDatabase) {
             status = "PENDING"
         )
 
-        val id = db.withdrawalDao().insertWithdrawal(withdrawal)
-
-        // Save bank details for auto-fill in future
+        val id = localDataSource.insertWithdrawal(withdrawal)
         saveBankDetails(bankName, accountHolder, accountNumber, branch)
         updatePlayerId(playerId)
-
         return Result.success(id)
     }
 
     suspend fun cancelWithdrawal(id: Long): Boolean {
-        val w = db.withdrawalDao().getWithdrawalById(id)
+        val w = localDataSource.getWithdrawalById(id)
         if (w != null && w.status == "PENDING") {
-            db.withdrawalDao().updateStatus(id, "CANCELLED")
+            localDataSource.updateWithdrawalStatus(id, "CANCELLED")
             return true
         }
         return false
     }
 
-    // Admin Actions
     suspend fun approveDeposit(id: Long) {
-        db.depositDao().updateStatus(id, "APPROVED")
+        localDataSource.updateDepositStatus(id, "APPROVED")
     }
 
     suspend fun rejectDeposit(id: Long) {
-        db.depositDao().updateStatus(id, "REJECTED")
+        localDataSource.updateDepositStatus(id, "REJECTED")
     }
 
     suspend fun approveWithdrawal(id: Long, payoutRef: String?) {
         val status = if (payoutRef.isNullOrBlank()) "APPROVED" else "COMPLETED"
-        db.withdrawalDao().updateStatus(id, status, payoutRef = payoutRef)
+        localDataSource.updateWithdrawalStatus(id, status, payoutRef = payoutRef)
     }
 
     suspend fun rejectWithdrawal(id: Long, reason: String?) {
-        db.withdrawalDao().updateStatus(id, "REJECTED", reason = reason)
+        localDataSource.updateWithdrawalStatus(id, "REJECTED", reason = reason)
     }
 }

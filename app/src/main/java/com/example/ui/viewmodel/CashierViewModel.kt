@@ -5,12 +5,22 @@ import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.CashierRepository
-import com.example.data.local.AppDatabase
 import com.example.data.local.entity.BankEntity
 import com.example.data.local.entity.DepositEntity
 import com.example.data.local.entity.UserEntity
 import com.example.data.local.entity.WithdrawalEntity
+import com.example.domain.usecase.ApproveDepositUseCase
+import com.example.domain.usecase.ApproveWithdrawalUseCase
+import com.example.domain.usecase.CancelWithdrawalUseCase
+import com.example.domain.usecase.ChangeLanguageUseCase
+import com.example.domain.usecase.ClearSavedBankUseCase
+import com.example.domain.usecase.RejectDepositUseCase
+import com.example.domain.usecase.RejectWithdrawalUseCase
+import com.example.domain.usecase.SubmitDepositUseCase
+import com.example.domain.usecase.SubmitWithdrawalUseCase
 import com.example.R
+import com.example.security.AdminAuth
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -19,6 +29,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.random.Random
 
 data class AiScanResult(
@@ -36,14 +47,20 @@ sealed class UiMessage {
     data class Error(val message: String) : UiMessage()
 }
 
-class CashierViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repository: CashierRepository
-
-    init {
-        val db = AppDatabase.getDatabase(application)
-        repository = CashierRepository(db)
-    }
+@HiltViewModel
+class CashierViewModel @Inject constructor(
+    private val repository: CashierRepository,
+    private val changeLanguageUseCase: ChangeLanguageUseCase,
+    private val submitDepositUseCase: SubmitDepositUseCase,
+    private val submitWithdrawalUseCase: SubmitWithdrawalUseCase,
+    private val cancelWithdrawalUseCase: CancelWithdrawalUseCase,
+    private val clearSavedBankUseCase: ClearSavedBankUseCase,
+    private val approveDepositUseCase: ApproveDepositUseCase,
+    private val rejectDepositUseCase: RejectDepositUseCase,
+    private val approveWithdrawalUseCase: ApproveWithdrawalUseCase,
+    private val rejectWithdrawalUseCase: RejectWithdrawalUseCase,
+    application: Application
+) : AndroidViewModel(application) {
 
     val userState: StateFlow<UserEntity?> = repository.userFlow
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
@@ -114,7 +131,7 @@ class CashierViewModel(application: Application) : AndroidViewModel(application)
 
     fun setLanguage(lang: String) {
         viewModelScope.launch {
-            repository.updateLanguage(lang)
+            changeLanguageUseCase(lang)
         }
     }
 
@@ -167,15 +184,15 @@ class CashierViewModel(application: Application) : AndroidViewModel(application)
         val ai = _aiScanResult.value
 
         val amountText = ai?.amountText ?: "LKR 5,000"
-        val amount = ai?.amountValue ?: 5000.0
+        val amountMinorUnits = ai?.amountValue?.let { (it * 100).toLong() } ?: 500000L
         val ref = ai?.reference ?: ""
 
         viewModelScope.launch {
-            val result = repository.submitDeposit(
+            val result = submitDepositUseCase(
                 playerId = playerId,
                 bankName = bank,
                 amountText = amountText,
-                amount = amount,
+                amountMinorUnits = amountMinorUnits,
                 slipUri = _uploadedSlipUri.value?.toString(),
                 reference = ref
             )
@@ -223,10 +240,17 @@ class CashierViewModel(application: Application) : AndroidViewModel(application)
             return
         }
 
+        val amountMinorUnits = (amtDouble * 100).toLong()
+
+        if (amountMinorUnits == 0L) {
+            _uiMessage.value = UiMessage.ErrorRes(R.string.err_invalid_amount)
+            return
+        }
+
         viewModelScope.launch {
-            val result = repository.submitWithdrawal(
+            val result = submitWithdrawalUseCase(
                 playerId = pId,
-                amount = amtDouble,
+                amountMinorUnits = amountMinorUnits,
                 secretCode = secret,
                 bankName = bank,
                 accountHolder = holder,
@@ -263,7 +287,7 @@ class CashierViewModel(application: Application) : AndroidViewModel(application)
 
     fun cancelPendingWithdrawal(id: Long) {
         viewModelScope.launch {
-            val success = repository.cancelWithdrawal(id)
+            val success = cancelWithdrawalUseCase(id)
             if (success) {
                 _uiMessage.value = UiMessage.SuccessRes(R.string.msg_withdraw_cancelled, listOf(id))
             } else {
@@ -274,7 +298,7 @@ class CashierViewModel(application: Application) : AndroidViewModel(application)
 
     fun clearSavedBank() {
         viewModelScope.launch {
-            repository.clearSavedBank()
+            clearSavedBankUseCase()
             withdrawBankName.value = ""
             withdrawAccountHolder.value = ""
             withdrawAccountNumber.value = ""
@@ -285,7 +309,7 @@ class CashierViewModel(application: Application) : AndroidViewModel(application)
 
     // Admin Actions
     fun loginAdmin() {
-        if (adminPinInput.value == "1234" || adminPinInput.value == "7777") {
+        if (AdminAuth.verifyPin(adminPinInput.value)) {
             isAdminLoggedIn.value = true
             adminPinInput.value = ""
             _uiMessage.value = UiMessage.SuccessRes(R.string.msg_admin_access_granted)
@@ -300,28 +324,28 @@ class CashierViewModel(application: Application) : AndroidViewModel(application)
 
     fun adminApproveDeposit(id: Long) {
         viewModelScope.launch {
-            repository.approveDeposit(id)
+            approveDepositUseCase(id)
             _uiMessage.value = UiMessage.SuccessRes(R.string.msg_deposit_approved, listOf(id))
         }
     }
 
     fun adminRejectDeposit(id: Long) {
         viewModelScope.launch {
-            repository.rejectDeposit(id)
+            rejectDepositUseCase(id)
             _uiMessage.value = UiMessage.SuccessRes(R.string.msg_deposit_rejected, listOf(id))
         }
     }
 
     fun adminApproveWithdrawal(id: Long, payoutRef: String?) {
         viewModelScope.launch {
-            repository.approveWithdrawal(id, payoutRef)
+            approveWithdrawalUseCase(id, payoutRef)
             _uiMessage.value = UiMessage.SuccessRes(R.string.msg_withdraw_approved, listOf(id))
         }
     }
 
     fun adminRejectWithdrawal(id: Long, reason: String?) {
         viewModelScope.launch {
-            repository.rejectWithdrawal(id, reason)
+            rejectWithdrawalUseCase(id, reason)
             _uiMessage.value = UiMessage.SuccessRes(R.string.msg_withdraw_rejected, listOf(id))
         }
     }

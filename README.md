@@ -2,6 +2,17 @@
 
 **Fast Xbet Official Sri Lanka** යනු ශ්‍රී ලංකාවේ 1xBet පරිශීලකයින් සඳහා වේගවත්, සුරක්ෂිත සහ විශ්වසනීය තැන්පතු (Deposits) සහ මුදල් ලබාගැනීම් (Withdrawals) පහසු කරන නිල Android යෙදුමයි (Cashier Helper App).
 
+> 🔥 මෙම README පූර්ණයෙන්ම දුඹුරු/අළුත් සුන්දර `Dark Mode` අත්දැකීමේ සාකච්ඡාවට සුදුසු ලෙස සකස් වී ඇත.
+
+---
+
+## 🌙 100% Dark Theme Support
+
+- පූර්ණයෙන්ම **දියුණු කළ Dark Mode** සහ **Light Mode** දෙකම සහය දක්වයි.
+- සෑම තිරයකටම මෙම යෙදුම **ගැඹුරු ඉදිරිපත් කිරීම්** සහ **ඉතා සුමට අක්ෂර පදනම්කරණය** ලබා දෙයි.
+- `Material 3` හි කറු පදනම් තේමාවන් හා **edge-to-edge adaptive UI** එකට ගැලපේ.
+- දින/රැයේ භාවිතය සඳහා සුවපහසු පරිසරයක් සහ පළපුරුදු UI පාලක රටාවන්.
+
 ---
 
 ## 🌟 ප්‍රධාන විශේෂාංග (Key Features)
@@ -39,7 +50,7 @@
 - **Local Database:** Room Database with KSP
 - **Asynchronous Flow:** Kotlin Coroutines & Flow
 - **Navigation:** Jetpack Type-Safe Navigation Compose
-- **Design System:** Custom Dark/Light dynamic colors, edge-to-edge layout
+- **Design System:** Custom Dark/Light dynamic colors with full dark mode optimization
 
 ---
 

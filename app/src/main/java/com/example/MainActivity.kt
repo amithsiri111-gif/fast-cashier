@@ -7,6 +7,7 @@ import androidx.activity.compose.LocalActivityResultRegistryOwner
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -99,15 +100,13 @@ sealed class NavRoutes(val route: String, val titleRes: Int, val icon: ImageVect
     object Support : NavRoutes("support", R.string.welcome_title, Icons.Default.HeadsetMic)
 }
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel: CashierViewModel by viewModels()
 
     override fun attachBaseContext(newBase: Context) {
-        val db = com.example.data.local.AppDatabase.getDatabase(newBase)
-        val user = kotlinx.coroutines.runBlocking { db.userDao().getUser() }
-        val lang = user?.language ?: "si"
-        super.attachBaseContext(LocaleHelper.setLocale(newBase, lang))
+        super.attachBaseContext(LocaleHelper.setLocale(newBase, "si"))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

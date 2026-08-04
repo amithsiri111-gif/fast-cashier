@@ -3,11 +3,14 @@ import java.util.Base64
 
 plugins {
   alias(libs.plugins.android.application)
+  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.kotlin.kapt)
   alias(libs.plugins.kotlin.compose)
   alias(libs.plugins.google.devtools.ksp)
   alias(libs.plugins.roborazzi)
   alias(libs.plugins.secrets)
   alias(libs.plugins.google.services)
+  alias(libs.plugins.hilt)
 }
 
 android {
@@ -22,6 +25,7 @@ android {
     versionName = "1.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    buildConfigField("String", "ADMIN_PIN_HASH", "\"${System.getenv("ADMIN_PIN_HASH") ?: ""}\"")
   }
 
   signingConfigs {
@@ -113,9 +117,15 @@ dependencies {
   implementation(libs.androidx.navigation.compose)
   implementation(libs.androidx.room.ktx)
   implementation(libs.androidx.room.runtime)
+  testImplementation(libs.androidx.room.testing)
+  implementation(libs.androidx.security.crypto)
   implementation(libs.coil.compose)
   implementation(libs.converter.moshi)
   implementation(libs.firebase.ai)
+  implementation(libs.sqlcipher)
+  implementation(libs.hilt.android)
+  implementation(libs.androidx.hilt.navigation.compose)
+  kapt(libs.hilt.compiler)
   // Uncomment to use Firestore:
   // implementation(libs.firebase.firestore)
 
@@ -139,11 +149,13 @@ dependencies {
   testImplementation(libs.androidx.junit)
   testImplementation(libs.junit)
   testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.androidx.room.testing)
   testImplementation(libs.robolectric)
   testImplementation(libs.roborazzi)
   testImplementation(libs.roborazzi.compose)
   testImplementation(libs.roborazzi.junit.rule)
   androidTestImplementation(platform(libs.androidx.compose.bom))
+  androidTestImplementation(libs.androidx.room.testing)
   androidTestImplementation(libs.androidx.compose.ui.test.junit4)
   androidTestImplementation(libs.androidx.espresso.core)
   androidTestImplementation(libs.androidx.junit)

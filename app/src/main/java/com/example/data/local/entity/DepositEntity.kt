@@ -11,7 +11,7 @@ data class DepositEntity(
     val playerId: String = "",
     val bankName: String = "",
     val amountText: String = "",
-    val amount: Double = 0.0,
+    val amountMinorUnits: Long = 0,
     val slipUri: String? = null,
     val status: String = "PENDING", // PENDING, APPROVED, REJECTED, CANCELLED
     val reference: String = "",

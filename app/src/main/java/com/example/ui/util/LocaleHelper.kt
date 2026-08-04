@@ -12,17 +12,7 @@ object LocaleHelper {
         val config = Configuration(context.resources.configuration)
         config.setLocale(locale)
 
-        @Suppress("DEPRECATION")
-        context.resources.updateConfiguration(config, context.resources.displayMetrics)
-
-        @Suppress("DEPRECATION")
-        context.applicationContext.resources.updateConfiguration(config, context.applicationContext.resources.displayMetrics)
-
-        val configContext = context.createConfigurationContext(config)
-        @Suppress("DEPRECATION")
-        configContext.resources.updateConfiguration(config, configContext.resources.displayMetrics)
-
-        return configContext
+        return context.createConfigurationContext(config)
     }
 }
 
