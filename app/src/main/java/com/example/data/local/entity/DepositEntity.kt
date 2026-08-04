@@ -3,7 +3,10 @@ package com.example.data.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "deposits")
+@Entity(
+    tableName = "deposits",
+    indices = [androidx.room.Index(value = ["reference"])]
+)
 data class DepositEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,

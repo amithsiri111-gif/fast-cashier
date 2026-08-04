@@ -109,17 +109,33 @@ class CashierViewModel @Inject constructor(
     val depositPlayerId: StateFlow<String> = _depositPlayerId.asStateFlow()
 
     // Withdraw Form State
-    val withdrawPlayerId = MutableStateFlow("")
-    val withdrawAmount = MutableStateFlow("")
-    val withdrawSecretCode = MutableStateFlow("")
-    val withdrawBankName = MutableStateFlow("")
-    val withdrawAccountHolder = MutableStateFlow("")
-    val withdrawAccountNumber = MutableStateFlow("")
-    val withdrawBranch = MutableStateFlow("")
+    private val _withdrawPlayerId = MutableStateFlow("")
+    val withdrawPlayerId = _withdrawPlayerId.asStateFlow()
+
+    private val _withdrawAmount = MutableStateFlow("")
+    val withdrawAmount = _withdrawAmount.asStateFlow()
+
+    private val _withdrawSecretCode = MutableStateFlow("")
+    val withdrawSecretCode = _withdrawSecretCode.asStateFlow()
+
+    private val _withdrawBankName = MutableStateFlow("")
+    val withdrawBankName = _withdrawBankName.asStateFlow()
+
+    private val _withdrawAccountHolder = MutableStateFlow("")
+    val withdrawAccountHolder = _withdrawAccountHolder.asStateFlow()
+
+    private val _withdrawAccountNumber = MutableStateFlow("")
+    val withdrawAccountNumber = _withdrawAccountNumber.asStateFlow()
+
+    private val _withdrawBranch = MutableStateFlow("")
+    val withdrawBranch = _withdrawBranch.asStateFlow()
 
     // Admin State
-    val isAdminLoggedIn = MutableStateFlow(false)
-    val adminPinInput = MutableStateFlow("")
+    private val _isAdminLoggedIn = MutableStateFlow(false)
+    val isAdminLoggedIn = _isAdminLoggedIn.asStateFlow()
+
+    private val _adminPinInput = MutableStateFlow("")
+    val adminPinInput = _adminPinInput.asStateFlow()
 
     // Global UI Message / Snackbars
     private val _uiMessage = MutableStateFlow<UiMessage?>(null)
@@ -219,11 +235,11 @@ class CashierViewModel @Inject constructor(
     // Auto fill withdrawal fields from saved user bank
     fun prefillWithdrawalForm() {
         val user = userState.value ?: return
-        if (withdrawPlayerId.value.isBlank()) withdrawPlayerId.value = user.playerId
-        if (withdrawBankName.value.isBlank()) withdrawBankName.value = user.savedBankName
-        if (withdrawAccountHolder.value.isBlank()) withdrawAccountHolder.value = user.savedAccountHolder
-        if (withdrawAccountNumber.value.isBlank()) withdrawAccountNumber.value = user.savedAccountNumber
-        if (withdrawBranch.value.isBlank()) withdrawBranch.value = user.savedBranch
+        if (_withdrawPlayerId.value.isBlank()) _withdrawPlayerId.value = user.playerId
+        if (_withdrawBankName.value.isBlank()) _withdrawBankName.value = user.savedBankName
+        if (_withdrawAccountHolder.value.isBlank()) _withdrawAccountHolder.value = user.savedAccountHolder
+        if (_withdrawAccountNumber.value.isBlank()) _withdrawAccountNumber.value = user.savedAccountNumber
+        if (_withdrawBranch.value.isBlank()) _withdrawBranch.value = user.savedBranch
     }
 
     fun submitWithdrawalRequest() {
@@ -260,8 +276,8 @@ class CashierViewModel @Inject constructor(
 
             result.onSuccess {
                 _uiMessage.value = UiMessage.SuccessRes(R.string.msg_withdraw_submitted)
-                withdrawAmount.value = ""
-                withdrawSecretCode.value = ""
+                _withdrawAmount.value = ""
+                _withdrawSecretCode.value = ""
             }.onFailure { ex ->
                 val msg = ex.message ?: ""
                 when {
@@ -299,19 +315,51 @@ class CashierViewModel @Inject constructor(
     fun clearSavedBank() {
         viewModelScope.launch {
             clearSavedBankUseCase()
-            withdrawBankName.value = ""
-            withdrawAccountHolder.value = ""
-            withdrawAccountNumber.value = ""
-            withdrawBranch.value = ""
+            _withdrawBankName.value = ""
+            _withdrawAccountHolder.value = ""
+            _withdrawAccountNumber.value = ""
+            _withdrawBranch.value = ""
             _uiMessage.value = UiMessage.SuccessRes(R.string.msg_bank_cleared)
         }
+    }
+
+    fun setWithdrawPlayerId(id: String) {
+        _withdrawPlayerId.value = id
+    }
+
+    fun setWithdrawAmount(amount: String) {
+        _withdrawAmount.value = amount
+    }
+
+    fun setWithdrawSecretCode(secretCode: String) {
+        _withdrawSecretCode.value = secretCode
+    }
+
+    fun setWithdrawBankName(bankName: String) {
+        _withdrawBankName.value = bankName
+    }
+
+    fun setWithdrawAccountHolder(holder: String) {
+        _withdrawAccountHolder.value = holder
+    }
+
+    fun setWithdrawAccountNumber(accountNumber: String) {
+        _withdrawAccountNumber.value = accountNumber
+    }
+
+    fun setWithdrawBranch(branch: String) {
+        _withdrawBranch.value = branch
+    }
+
+    fun setAdminPinInput(pin: String) {
+        _adminPinInput.value = pin
     }
 
     // Admin Actions
     fun loginAdmin() {
         if (AdminAuth.verifyPin(adminPinInput.value)) {
-            isAdminLoggedIn.value = true
-            adminPinInput.value = ""
+            _isAdminLoggedIn.value = true
+            _adminPinInput.value = ""
             _uiMessage.value = UiMessage.SuccessRes(R.string.msg_admin_access_granted)
         } else {
             _uiMessage.value = UiMessage.ErrorRes(R.string.err_invalid_admin_pin)
@@ -319,7 +367,7 @@ class CashierViewModel @Inject constructor(
     }
 
     fun logoutAdmin() {
-        isAdminLoggedIn.value = false
+        _isAdminLoggedIn.value = false
     }
 
     fun adminApproveDeposit(id: Long) {

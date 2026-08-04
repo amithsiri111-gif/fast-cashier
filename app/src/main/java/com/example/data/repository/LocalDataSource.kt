@@ -38,6 +38,8 @@ class LocalDataSource(
 
     suspend fun getPendingWithdrawal(): WithdrawalEntity? = withdrawalDao.getPendingWithdrawal()
     suspend fun insertWithdrawal(withdrawal: WithdrawalEntity): Long = withdrawalDao.insertWithdrawal(withdrawal)
+    suspend fun insertWithdrawalIfNoPending(withdrawal: WithdrawalEntity): Long = withdrawalDao.insertWithdrawalIfNoPending(withdrawal)
+    suspend fun deleteWithdrawal(id: Long) = withdrawalDao.deleteById(id)
     suspend fun getWithdrawalById(id: Long): WithdrawalEntity? = withdrawalDao.getWithdrawalById(id)
     suspend fun updateWithdrawalStatus(id: Long, status: String, payoutRef: String? = null, reason: String? = null) = withdrawalDao.updateStatus(id, status, payoutRef = payoutRef, reason = reason)
 }

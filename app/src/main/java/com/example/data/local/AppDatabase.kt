@@ -24,7 +24,7 @@ import java.security.SecureRandom
 
 @Database(
     entities = [UserEntity::class, DepositEntity::class, WithdrawalEntity::class, BankEntity::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -52,7 +52,7 @@ abstract class AppDatabase : RoomDatabase() {
                     DATABASE_NAME
                 )
                     .openHelperFactory(factory)
-                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                    .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                     .addCallback(DatabaseCallback())
                     .build()
                 INSTANCE = instance
@@ -93,9 +93,15 @@ abstract class AppDatabase : RoomDatabase() {
         internal val MIGRATION_2_3 = object : androidx.room.migration.Migration(2, 3) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL("ALTER TABLE deposits ADD COLUMN amountMinorUnits INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("UPDATE deposits SET amountMinorUnits = CAST(ROUND(amount * 100) AS INTEGER) WHERE amount IS NOT NULL")
                 database.execSQL("ALTER TABLE withdrawals ADD COLUMN amountMinorUnits INTEGER NOT NULL DEFAULT 0")
-                database.execSQL("UPDATE withdrawals SET amountMinorUnits = CAST(ROUND(amount * 100) AS INTEGER) WHERE amount IS NOT NULL")
+            }
+        }
+
+        internal val MIGRATION_3_4 = object : androidx.room.migration.Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    "CREATE UNIQUE INDEX IF NOT EXISTS index_deposits_reference ON deposits(reference)"
+                )
             }
         }
 
@@ -106,15 +112,6 @@ abstract class AppDatabase : RoomDatabase() {
                     CoroutineScope(Dispatchers.IO).launch {
                         seedDefaultBanks(database.bankDao())
                         seedDefaultUser(database.userDao())
-                    }
-                }
-            }
-
-            override fun onOpen(db: SupportSQLiteDatabase) {
-                super.onOpen(db)
-                INSTANCE?.let { database ->
-                    CoroutineScope(Dispatchers.IO).launch {
-                        seedDefaultBanks(database.bankDao())
                     }
                 }
             }

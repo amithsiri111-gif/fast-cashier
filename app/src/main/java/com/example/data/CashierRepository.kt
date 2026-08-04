@@ -117,11 +117,6 @@ class CashierRepository(
             return Result.failure(IllegalArgumentException("INVALID_AMOUNT"))
         }
 
-        val pendingExists = localDataSource.getPendingWithdrawal()
-        if (pendingExists != null) {
-            return Result.failure(IllegalStateException("PENDING_WITHDRAWAL_EXISTS:${pendingExists.id}:${pendingExists.amountText}"))
-        }
-
         val request = SubmitWithdrawalRequest(
             playerId = playerId,
             amountMinorUnits = amountMinorUnits,
@@ -155,7 +150,13 @@ class CashierRepository(
             status = "PENDING"
         )
 
-        val id = localDataSource.insertWithdrawal(withdrawal)
+        val id = localDataSource.insertWithdrawalIfNoPending(withdrawal)
+        if (id == -1L) {
+            val pendingExists = localDataSource.getPendingWithdrawal()
+            val parts = pendingExists?.let { "${it.id}:${it.amountText}" } ?: ""
+            return Result.failure(IllegalStateException("PENDING_WITHDRAWAL_EXISTS:$parts"))
+        }
+
         saveBankDetails(bankName, accountHolder, accountNumber, branch)
         updatePlayerId(playerId)
         return Result.success(id)
